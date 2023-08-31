@@ -1,6 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 
 const Navbar = () => {
   return (
@@ -40,7 +41,10 @@ const Navbar = () => {
           </ul>
           <form className="d-flex">
             <input type="text" name="search" className="form-control me-2" placeholder="Search" aria-label="Search" />
-            <button type="submit" className="btn btn-primary"><i className="fas fa-search" aria-hidden="true"></i><span className="visually-hidden">Search</span></button>
+            <button type="submit" className="btn btn-primary">
+              <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
+              <span className="visually-hidden">Search</span>
+            </button>
           </form>
         </div>
       </div>
