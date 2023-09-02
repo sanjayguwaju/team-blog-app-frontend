@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
@@ -30,11 +30,11 @@ const Footer = () => {
           <div className="col-12 col-sm-6 col-md-3">
             <h6>Follow us</h6>
             <ul className="list-unstyled">
-              {/* <li><a href="#0"><FontAwesomeIcon icon={faFacebook} /> Facebook</a></li>
+              <li><a href="#0"><FontAwesomeIcon icon={faFacebook} /> Facebook</a></li>
               <li><a href="#0"><FontAwesomeIcon icon={faInstagram} /> Instagram</a></li>
               <li><a href="#0"><FontAwesomeIcon icon={faTwitter} /> Twitter</a></li>
               <li><a href="#0"><FontAwesomeIcon icon={faYoutube} /> YouTube</a></li>
-              <li><a href="#0"><FontAwesomeIcon icon={faLinkedin} /> LinkedIn</a></li> */}
+              <li><a href="#0"><FontAwesomeIcon icon={faLinkedin} /> LinkedIn</a></li>
             </ul>
           </div>
           <div className="col-12 col-sm-6 col-md-3">
