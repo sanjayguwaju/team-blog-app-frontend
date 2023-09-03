@@ -22,3 +22,30 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# IDE - VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# IDE - Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+yarn.lock
+
+# NPM
+npm-debug.log*
+npm-debug.log
+npm-error.log*
+package-lock.json
+
+# env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
