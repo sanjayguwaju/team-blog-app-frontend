@@ -1,11 +1,31 @@
 const Newsletter = () => {
-    return (
-      <div>
-       <h3>Sign Up for our Newsletter</h3>
-       <input className="form-control" type="text" placeholder="Enter your email" aria-label="default input example"></input>
-       <button type="button" className="btn btn-primary">Sign Up</button>
+  return (
+    <div className="card">
+      <div className="card-body bg-light">
+        <h5 className="card-title">Signup for our newsletter</h5>
+        <form>
+          <div className="input-group mb-2">
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="addon-left">
+                @
+              </span>
+            </div>
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              placeholder="Enter your email"
+              aria-describedby="addon-left"
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Signup
+          </button>
+        </form>
       </div>
-    );
-  };
-  
-  export default Newsletter;
+    </div>
+  );
+};
+
+export default Newsletter;
