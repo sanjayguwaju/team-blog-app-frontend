@@ -1,11 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import './Card.css';
 
 const Card = () => {
   return (
     <div>
-        <div className="card" style={{width: "20rem"}}>
-            <div className="card-body">
+        <div className="card custom-card" style={{width: "20rem"}}>
+            <div className="card-body ">
             <h5 className="card-title">About the blog</h5>
             <p className="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
