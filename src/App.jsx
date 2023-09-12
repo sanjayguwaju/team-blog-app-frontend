@@ -1,6 +1,7 @@
-import './App.css';
-import Navbar from '../src/components/Nabar.jsx';
-import Footer from './components/Footer';
+import './App.css'
+import Navbar from '../src/components/Nabar.jsx'
+import Footer from './components/Footer'
+import Card from './components/Card'
 
 function App() {
   return (
@@ -23,14 +24,13 @@ function App() {
           </div>
           <div className="col-md-3">
             <p>Column 3</p>
+            <Card />
           </div>
           <div className="col-md-1">
             <p>Column 4</p>
           </div>
         </div>
       </div>
-    
-
       <Footer />
     </>
   );
