@@ -10,10 +10,10 @@ function App() {
       <Navbar />
       <div className="container">
         <div className="row">
-          <div className="col-md-1">
+          {/* <div className="col-1 col-md-1">
             <p>Column 1</p>
-          </div>
-          <div className="col-md-6">
+          </div> */}
+          <div className="col-md-8">
             <p>Column 2</p>
             <h1>Welcome to the Blog App</h1>
             <p>
@@ -30,15 +30,15 @@ function App() {
               nostrum, cupiditate necessitatibus error ipsa inventore sit veritatis
               quasi vel sed.</p>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <p>Column 3</p>
             <Card />
             <Card />
             <Card />
           </div>
-          <div className="col-md-1">
+          {/* <div className="col-1 col-md-1">
             <p>Column 4</p>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />
