@@ -1,6 +1,7 @@
 import './App.css'
 import Navbar from '../src/components/Nabar.jsx'
 import Footer from './components/Footer'
+import Newsletter from './components/Newsletter'
 import Card from './components/Card'
 
 function App() {
