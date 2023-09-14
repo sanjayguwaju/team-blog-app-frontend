@@ -1,3 +1,6 @@
+import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const PopularCard = () => {
     return (
         <div className="col-3">
@@ -8,8 +11,8 @@ const PopularCard = () => {
                     <h5>Blog post title</h5>
                     <p className="small mb-2">Author Name (<time dateTime="2017-03-12T10:24">March 12, 2017 at 10:24 AM</time>)</p>
                     <div className="small mb-2">
-                        <span className="badge bg-primary"><i className="fa fa-thumbs-up" aria-hidden="true"></i> 13 <span className="visually-hidden">likes</span></span>
-                        <span className="badge bg-primary"><i className="fa fa-comments" aria-hidden="true"></i> 3 <span className="visually-hidden">comments</span></span>
+                        <span className="badge bg-primary"><FontAwesomeIcon icon={faThumbsUp} /> 13 <span className="visually-hidden">likes</span></span>
+                        <span className="badge bg-primary"><FontAwesomeIcon icon={faComment} /> 3 <span className="visually-hidden">comments</span></span>
                     </div>
                     <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </a>
