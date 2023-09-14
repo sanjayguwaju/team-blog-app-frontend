@@ -1,15 +1,15 @@
 import './App.css'
 import Navbar from '../src/components/Nabar.jsx'
 import Footer from './components/Footer'
-import Newsletter from './components/Newsletter'
-import Card from './components/Card'
+import RecentCard from './components/RecentCard'
+import PopularCard from './components/PopularCard'
 
 function App() {
   return (
     <>
       <Navbar />
-      <Newsletter />
-      <Card />
+      <RecentCard />
+      <PopularCard />
       <h1>Welcome to the Blog App</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Neque rem explicabo deserunt sed dignissimos.
