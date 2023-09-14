@@ -1,6 +1,8 @@
 import './App.css'
 import Navbar from '../src/components/Nabar.jsx'
 import Footer from './components/Footer'
+import RecentCard from './components/RecentCard'
+import PopularCard from './components/PopularCard'
 import Newsletter from './components/Newsletter'
 import Card from './components/Card'
 import Pagination from './components/Pagination'
@@ -34,8 +36,8 @@ function App() {
           </div>
           <div className="col-md-3">
             <p>Column 3</p>
-            <Card />
-            <Card />
+            <RecentCard />
+            <PopularCard />
             <Card />
           </div>
           <div className="col-md-1">
