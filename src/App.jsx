@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Newsletter from './components/Newsletter'
 import Card from './components/Card'
 import TagCloud from './components/TagCloud'
+import Pagination from './components/Pagination'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <div className="col-md-8">
             <p>Column 2</p>
             <TagCloud />  
+            <Pagination />
       <h1>Welcome to the Blog App</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque rem
