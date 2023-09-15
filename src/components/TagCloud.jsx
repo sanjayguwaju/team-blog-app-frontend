@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const TagCloud = () => {
     return (
         <div>
-            <div className="card custom-card" style={{ width: "20rem" }}>
+            <div className="card custom-card">
                 <div className="card-body">
                     <h5 className="card-title">Tag cloud</h5>
                     <a href="#" className="badge bg-secondary" style={{ textDecoration: 'none' }}>#tag</a>

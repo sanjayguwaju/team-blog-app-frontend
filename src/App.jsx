@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Pagination from './components/Pagination'
 import axios from 'axios'
 import BlogPost from './components/BlogPost'
+import Sidebar from './components/Sidebar'
 
 function App() {
   const [post, setPost] = useState([]);
@@ -42,6 +43,7 @@ function App() {
             <Pagination />
           </div>
           <div className="col-md-4">
+            <Sidebar/>
           </div>
         </div>
       </div>
