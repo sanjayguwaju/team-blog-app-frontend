@@ -3,6 +3,7 @@ import Navbar from '../src/components/Nabar.jsx'
 import Footer from './components/Footer'
 import Newsletter from './components/Newsletter'
 import Card from './components/Card'
+import TagCloud from './components/TagCloud'
 import Pagination from './components/Pagination'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           </div> */}
           <div className="col-md-8">
             <p>Column 2</p>
+            <TagCloud />  
             <Pagination />
       <h1>Welcome to the Blog App</h1>
             <p>
