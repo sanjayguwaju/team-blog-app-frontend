@@ -35,6 +35,7 @@ function App() {
       <Navbar />
       <div className="container">
         <div className="row">
+
           <div className="col-md-8">
             {post.map(postdata => (
               <BlogPost key={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
@@ -45,7 +46,6 @@ function App() {
           </div>
         </div>
       </div>
-      
       <Footer />
     </>
   );
