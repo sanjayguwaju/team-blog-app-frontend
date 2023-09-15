@@ -25,4 +25,5 @@ dist-ssr
 
 # Yarn
 .yarn
+.yarnrc.yml
 yarn.lock
