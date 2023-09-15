@@ -1,11 +1,9 @@
-import "./Card.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-const BlogPost = ({title, content}) => {
-  return (
-    <>
-      <div className="container my-3 my-sm-5">
-        <div className="row">
-          <div className="col-12 col-md-6 col-lg-8">
+const Blog = ({title,content,image}) => {
+    return (
+      <>
           <h2 className="mb-3">Latest posts</h2>
           <article className="mb-3">
             <header className="mb-2">
@@ -27,7 +25,7 @@ const BlogPost = ({title, content}) => {
               </div>
             </header>
             <figure className="figure">
-              <img src="http://placehold.it/800x600" className="figure-img img-fluid" alt="Figure image" />
+              <img src={image} className="figure-img img-fluid" alt="Figure image" />
               <figcaption className="figure-caption small">
                 <p className="mb-0"><i className="fa fa-camera" aria-hidden="true"></i><span className="sr-only">Photo by:</span> Artist Name</p>
               </figcaption>
@@ -36,11 +34,8 @@ const BlogPost = ({title, content}) => {
             <a href="blog-post-text.html" className="btn btn-primary">Read more</a>
           </article>
           <hr />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default BlogPost;
+      </>
+    );
+  };
+  
+  export default Blog;

@@ -1,12 +1,9 @@
 // BlogLayout.js
 import PropTypes from 'prop-types';
-import Navbar from './Nabar'; 
-import Footer from './Footer'; 
 
 const BlogLayout = ({ children }) => {
     return (
         <div>
-            <Navbar />
             <div className="container">
                 <div className="row">
                     <div className="col-md-8">{children}</div>
@@ -15,7 +12,6 @@ const BlogLayout = ({ children }) => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };
