@@ -22,7 +22,7 @@ function App() {
   
 
   function getAllBlogs(setPost) {
-    axios.get('https://team-blog-app-backend.onrender.com/blogs/getallblog')
+    axios.get(`${process.env.SERVER_URL}/blogs/getallblog`)
       .then(response => {
         setPost(response.data);
       })
