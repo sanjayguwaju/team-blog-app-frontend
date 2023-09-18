@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import BlogPostbyId from '../pages/BlogPostbyId';
+import { Link } from 'react-router-dom';
 
 const BlogPost = ({title,content,image}) => {
     return (
@@ -31,7 +33,7 @@ const BlogPost = ({title,content,image}) => {
               </figcaption>
             </figure>
             <p>{content}</p>
-            <a href="blog-post-text.html" className="btn btn-primary">Read more</a>
+            <Link to = "http://localhost:5173/blogpost" className="btn btn-primary">Read more</Link>
           </article>
           <hr />
       </>
