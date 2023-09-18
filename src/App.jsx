@@ -6,6 +6,7 @@ import Pagination from './components/Pagination'
 import axios from 'axios'
 import BlogPost from './components/BlogPost'
 import Sidebar from './components/Sidebar'
+import CommentatorDetail from './components/CommentatorDetail'
 
 function App() {
   const [post, setPost] = useState([]);
@@ -47,7 +48,7 @@ function App() {
           </div>
         </div>
       </div>
-      
+      <CommentatorDetail />
       <Footer />
     </>
   );
