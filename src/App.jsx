@@ -1,14 +1,17 @@
-import {Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import Homepage from './pages/Homepage';
-import BlogPost from './components/BlogPost';
 import BlogPostByID from './pages/BlogPostByID';
+import MainLayout from './components/MainLayout';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Homepage/>} />
-      <Route path="/getpostbyid" element={<BlogPostByID/>} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+            <Route index element={<Homepage />} />
+            <Route path="/getpostbyid/:id" element={<BlogPostByID />} />
+        </Route>
+        
+      </Routes>
   );
 }
 
