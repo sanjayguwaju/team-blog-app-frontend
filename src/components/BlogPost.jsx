@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
-const BlogPost = ({title,content,image}) => {
+const BlogPost = ({id,title,content,image}) => {
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>
           <article className="mb-3">
             <header className="mb-2">
               <span className="badge bg-primary">Category</span>
-              <h1><a href="blog-post-text.html">{title}</a></h1>
+              <h1><Link to={`/getpostbyid/${id}`}>{title}</Link></h1>
               <div><a href="#0">Author Name</a></div>
               <div className="small">Posted on: <time dateTime="2017-03-12T10:24">March 12, 2017 at 10:24 AM</time></div>
               <div className="small">
@@ -31,7 +32,7 @@ const BlogPost = ({title,content,image}) => {
               </figcaption>
             </figure>
             <p>{content}</p>
-            <a href="blog-post-text.html" className="btn btn-primary">Read more</a>
+            <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read more</Link>
           </article>
           <hr />
       </>
@@ -39,3 +40,5 @@ const BlogPost = ({title,content,image}) => {
   };
   
   export default BlogPost;
+
+
