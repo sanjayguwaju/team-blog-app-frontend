@@ -1,16 +1,12 @@
 
 import { useEffect, useState } from 'react'
-import Navbar from '../components/Nabar.jsx'
-import Footer from '../components/Footer'
 import Pagination from '../components/Pagination'
 import axios from 'axios'
 import BlogPost from '../components/BlogPost'
-import Sidebar from '../components/Sidebar'
 
 
 const Homepage = () => {
-    const [post, setPost] = useState([]);
-
+    const [posts, setPost] = useState([]);
   useEffect(() => {
     getAllBlogs(setPost);
 
@@ -34,21 +30,11 @@ const Homepage = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            {post.map(postdata => (
-              <BlogPost key={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
-            ))}
-            <Pagination />
-          </div>
-          <div className="col-md-4">
-            <Sidebar/>
-          </div>
-        </div>
-      </div>
-      <Footer />
+      
+        {posts.map(postdata => (
+          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
+        ))}
+        <Pagination />
     </>
   )
 }
