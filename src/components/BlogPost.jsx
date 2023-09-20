@@ -31,7 +31,7 @@ const BlogPost = ({title,content,image}) => {
               </figcaption>
             </figure>
             <p>{content}</p>
-            <a href="blog-post-text.html" className="btn btn-primary">Read more</a>
+            <Link to ="https://www.google.com" className="btn btn-primary">Read more</Link>
           </article>
           <hr />
       </>
