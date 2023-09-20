@@ -1,53 +1,17 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Navbar from '../src/components/Nabar.jsx'
-import Footer from './components/Footer'
-import Pagination from './components/Pagination'
-import axios from 'axios'
-import BlogPost from './components/BlogPost'
+import { Routes, Route} from 'react-router-dom'
+import Homepage from './pages/Homepage';
+import BlogPostByID from './pages/BlogPostByID';
+import MainLayout from './components/MainLayout';
 
 function App() {
-  const [post, setPost] = useState([]);
-
-  useEffect(() => {
-    getAllBlogs(setPost);
-
-    const id = setInterval(() => {
-      getAllBlogs(setPost);
-    }, 50000);
-    
-    return () => clearInterval(id);
-  }, []);
-  
-
-  function getAllBlogs(setPost) {
-    axios.get('https://team-blog-app-backend.onrender.com/blogs/getallblog')
-      .then(response => {
-        setPost(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
   return (
-    <>
-      <Navbar />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            {post.map(postdata => (
-              <BlogPost key={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
-            ))}
-            <Pagination />
-          </div>
-          <div className="col-md-4">
-          </div>
-        </div>
-      </div>
-      
-      <Footer />
-    </>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+            <Route index element={<Homepage />} />
+            <Route path="/getpostbyid/:id" element={<BlogPostByID />} />
+        </Route>
+        
+      </Routes>
   );
 }
 
