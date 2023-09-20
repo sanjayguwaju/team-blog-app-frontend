@@ -6,6 +6,7 @@ import Pagination from './components/Pagination'
 import axios from 'axios'
 import BlogPost from './components/BlogPost'
 import Sidebar from './components/Sidebar'
+import AboutAuthor from './components/AboutAuthor'
 
 function App() {
   const [post, setPost] = useState([]);
@@ -40,6 +41,7 @@ function App() {
             {post.map(postdata => (
               <BlogPost key={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
             ))}
+            <AboutAuthor />
             <Pagination />
           </div>
           <div className="col-md-4">

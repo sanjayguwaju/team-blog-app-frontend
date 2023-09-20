@@ -2,27 +2,23 @@
 
 const AboutAuthor = () => {
   return (
-    <div> 
-      <h2 className="mb-3">About Author</h2>
-      <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap"> </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-      {/* <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <img class="card-img-top" src="..." alt="Card image cap"></img>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div className="card" style={{ width: '18rem' }}>
+      <div className="card-body">
+        <div className="text-center">
+          <h5 className="card-title">Card title</h5>
+          <img src="http://placehold.it/200x200" className="img-fluid rounded-circle" alt="Figure image" />
+          <ul className="list-inline">
+            <li className="list-inline-item small"><a href="#" style={{ textDecoration: 'none' }}>Twitter</a></li>
+            <li className="list-inline-item small"><a href="#" style={{ textDecoration: 'none' }}>LinkedIn</a></li>
+          </ul>
         </div>
-      </div> */}
+        <h5><a href="#" style={{ textDecoration: 'none' }}>Author Name</a></h5>
+        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget purus nec a
+          rcu vulputate tincidunt. Fusce scelerisque, nisl sit amet tincidunt feugiat, arcu urna varius ligula, sed vehi
+          cula lorem libero nec justo.</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default AboutAuthor
