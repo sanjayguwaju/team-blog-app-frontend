@@ -2,7 +2,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 
-const BlogPost = ({id,title,content,image}) => {
+const BlogPost = ({id,title,content,image,author,createdDate}) => {
+  const formattedDate = new Date(createdDate).toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true
+  });
+
+  const words = content.split(' ');
+  console.log(words);
+  const summary = words.slice(0, 50).join(' ');
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>
@@ -10,8 +23,8 @@ const BlogPost = ({id,title,content,image}) => {
             <header className="mb-2">
               <span className="badge bg-primary">Category</span>
               <h1><Link to={`/getpostbyid/${id}`}>{title}</Link></h1>
-              <div><a href="#0">Author Name</a></div>
-              <div className="small">Posted on: <time dateTime="2017-03-12T10:24">March 12, 2017 at 10:24 AM</time></div>
+              <div><a href="#0">{author}</a></div>
+              <div className="small">Posted on: <time dateTime="2017-03-12T10:24">{formattedDate}</time></div>
               <div className="small">
                 <span className="badge bg-primary"><i className="fa fa-thumbs-up" aria-hidden="true"></i> 13 <span className="sr-only">likes</span></span>
                 <span className="badge bg-primary"><i className="fa fa-comments" aria-hidden="true"></i> 3 <span className="sr-only">comments</span></span>
@@ -31,7 +44,7 @@ const BlogPost = ({id,title,content,image}) => {
                 <p className="mb-0"><i className="fa fa-camera" aria-hidden="true"></i><span className="sr-only">Photo by:</span> Artist Name</p>
               </figcaption>
             </figure>
-            <p>{content}</p>
+            <p>{summary}</p>
             <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read more</Link>
           </article>
           <hr />

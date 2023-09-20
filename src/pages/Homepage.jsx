@@ -7,6 +7,7 @@ import BlogPost from '../components/BlogPost'
 
 const Homepage = () => {
     const [posts, setPost] = useState([]);
+    // console.log(posts)
   useEffect(() => {
     getAllBlogs(setPost);
 
@@ -19,7 +20,7 @@ const Homepage = () => {
   
 
   function getAllBlogs(setPost) {
-    axios.get(`${process.env.SERVER_URL}/blogs/getallblog`)
+    axios.get("http://localhost:3000/blogs/getallblog/")
       .then(response => {
         setPost(response.data);
       })
@@ -32,7 +33,14 @@ const Homepage = () => {
     <>
       
         {posts.map(postdata => (
-          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
+          <BlogPost 
+            key={postdata?._id} 
+            id={postdata?._id} 
+            title={postdata?.title} 
+            content={postdata?.content} 
+            image={postdata?.image} 
+            author={postdata?.author?.name ? postdata?.author?.name : "no author is avaliable"  }
+            createdDate={postdata?.createdAt}/>
         ))}
         <Pagination />
     </>

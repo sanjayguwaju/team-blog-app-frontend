@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
+import { faPenToSquare, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 
 const Navbar = () => {
@@ -47,6 +47,23 @@ const Navbar = () => {
             </button>
           </form>
         </div>
+      </div>
+      <div className='mx-3'>
+          <button type="submit" className="btn btn-primary">
+            <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" />
+            <span className="visually-hidden">Search</span>
+          </button>
+      </div>
+      <div className='mx-3 dropdown'>
+        <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+          <span className="visually-hidden">Search</span>
+        </button>
+        <ul className="dropdown-menu dropdown-menu-end mx-3" aria-labelledby="dropdownMenuButton">
+          <li><a className="dropdown-item" href="#option1">Profile</a></li>
+          <li><a className="dropdown-item" href="#option2">Login</a></li>
+          <li><a className="dropdown-item" href="#option3">Logout</a></li>
+        </ul>
       </div>
     </nav>
   );
