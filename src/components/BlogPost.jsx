@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 
-const BlogPost = ({id,title,content,image}) => {
+const BlogPost = ({id,title,content,image,showReadMore}) => {
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>
@@ -32,7 +32,7 @@ const BlogPost = ({id,title,content,image}) => {
               </figcaption>
             </figure>
             <p>{content}</p>
-            <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read more</Link>
+            {showReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read more</Link>}
           </article>
           <hr />
       </>

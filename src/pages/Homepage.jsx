@@ -7,7 +7,11 @@ import BlogPost from '../components/BlogPost'
 
 const Homepage = () => {
     const [posts, setPost] = useState([]);
+    const [showReadMore, setShowReadMore] = useState(false);
   useEffect(() => {
+    if (posts) {
+      setShowReadMore(true);
+    }
     getAllBlogs(setPost);
 
     const id = setInterval(() => {
@@ -32,7 +36,7 @@ const Homepage = () => {
     <>
       
         {posts.map(postdata => (
-          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
+          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} showReadMore={showReadMore} />
         ))}
         <Pagination />
     </>
