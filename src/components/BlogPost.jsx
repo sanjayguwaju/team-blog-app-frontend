@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faThumbsUp, faComments } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 const BlogPost = ({id,title,content,image}) => {
@@ -13,8 +13,12 @@ const BlogPost = ({id,title,content,image}) => {
               <div><a href="#0">Author Name</a></div>
               <div className="small">Posted on: <time dateTime="2017-03-12T10:24">March 12, 2017 at 10:24 AM</time></div>
               <div className="small">
-                <span className="badge bg-primary"><i className="fa fa-thumbs-up" aria-hidden="true"></i> 13 <span className="sr-only">likes</span></span>
-                <span className="badge bg-primary"><i className="fa fa-comments" aria-hidden="true"></i> 3 <span className="sr-only">comments</span></span>
+                  <span className="badge bg-primary">
+                    <FontAwesomeIcon icon={faThumbsUp} /> 13 <span className="visually-hidden">likes</span>
+                  </span>
+                  <span className="badge bg-primary">
+                    <FontAwesomeIcon icon={faComments} /> 3 <span className="visually-hidden">comments</span>
+                  </span>
               </div>
               <div className="small">
                 <a href="#0" className="badge bg-secondary">#tag</a>
@@ -40,5 +44,3 @@ const BlogPost = ({id,title,content,image}) => {
   };
   
   export default BlogPost;
-
-
