@@ -5,6 +5,7 @@ import BlogPost from "../components/BlogPost"
 
 const BlogPostByID = () => {
   const [postbyId, setPostById] = useState([]);
+  const [showTrimmedPost, setshowTrimmedPost] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const BlogPostByID = () => {
 
   return (
     <>
-      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image}/>
+      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} showTrimmedPost={showTrimmedPost} />
     </>
   )
 }

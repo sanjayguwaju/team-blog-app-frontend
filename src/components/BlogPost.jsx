@@ -2,10 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const BlogPost = ({ id, title, image, content }) => {
-  const words = content.split(" ");
-  console.log(words);
-  const summary = words.slice(0, 50).join(" ");
+const BlogPost = ({ id, title, image, content, showTrimmedPost}) => {
+  console.log("ShowTrimmedPost ~~~~~~~~~~~>", showTrimmedPost)
+  let summary = "";
+  if (typeof content === "string") {
+    const words = content.split(" ");
+    summary = words.slice(0, 50).join(" ");
+  }
   return (
     <>
       <h2 className="mb-3">Latest posts</h2>
@@ -66,7 +69,9 @@ const BlogPost = ({ id, title, image, content }) => {
             </p>
           </figcaption>
         </figure>
-        <p>{content}</p>
+        {/* {console.log("kkkkkkkkkkkkkkkk",summary)} */}
+        {console.log("kkkkkkkkkkkkkkkk",showTrimmedPost)}
+        {showTrimmedPost ? <p>{summary}</p> : <p>{content}</p>}
         <Link to={`/getpostbyid/${id}`} className="btn btn-primary">
           Read more
         </Link>
