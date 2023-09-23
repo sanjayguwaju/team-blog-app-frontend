@@ -1,6 +1,7 @@
 import Navbar from "./Nabar";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import SidebarSinglePost from "./SidebarSinglePost";
 
 const SingleBlogPostLayout = () => {
     return (
@@ -12,6 +13,7 @@ const SingleBlogPostLayout = () => {
                         <Outlet />
                     </div>
                     <div className="col-md-4"> 
+                    <SidebarSinglePost />
                     </div>
                 </div>
             </div>
