@@ -2,6 +2,7 @@ import { Routes, Route} from 'react-router-dom'
 import Homepage from './pages/Homepage';
 import BlogPostByID from './pages/BlogPostByID';
 import MainLayout from './components/MainLayout';
+import Register from './components/Register';
 import Login from './components/Login';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
             <Route index element={<Homepage />} />
             <Route path="/getpostbyid/:id" element={<BlogPostByID />} />
         </Route>
+        <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login />} />
       </Routes>
   );
