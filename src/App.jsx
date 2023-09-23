@@ -3,6 +3,7 @@ import Homepage from './pages/Homepage';
 import BlogPostByID from './pages/BlogPostByID';
 import MainLayout from './components/MainLayout';
 import Register from './components/Register';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             <Route path="/getpostbyid/:id" element={<BlogPostByID />} />
         </Route>
         <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login />} />
       </Routes>
   );
 }
