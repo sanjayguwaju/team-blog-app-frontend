@@ -2,8 +2,7 @@ import { Routes, Route} from 'react-router-dom'
 import Homepage from './pages/Homepage';
 import BlogPostByID from './pages/BlogPostByID';
 import MainLayout from './components/MainLayout';
-import Register from './components/Register';
-import Login from './components/Login';
+import Write from './components/Write';
 
 function App() {
   return (
@@ -12,8 +11,7 @@ function App() {
             <Route index element={<Homepage />} />
             <Route path="/getpostbyid/:id" element={<BlogPostByID />} />
         </Route>
-        <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/write" element={<Write />} />
       </Routes>
   );
 }
