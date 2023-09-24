@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import Navbar from "./Nabar";
 
 const Write = () => {
     const [value, setValue] = useState("");
@@ -83,6 +84,8 @@ const Write = () => {
     };
 
     return (
+        <>
+        <Navbar/>
         <div className="container mt-4">
             <div className="row">
                 <div className="col-md-8">
@@ -248,6 +251,7 @@ const Write = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
