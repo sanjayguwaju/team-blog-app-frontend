@@ -3,6 +3,7 @@ import Homepage from './pages/Homepage';
 import BlogPostByID from './pages/BlogPostByID';
 import MainLayout from './components/MainLayout';
 import SingleBlogPostLayout from './components/SingleBlogPostLayout';
+import Write from './components/Write';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/getpostbyid/:id" element={<SingleBlogPostLayout/>} >
           <Route index element={<BlogPostByID />} />
         </Route>
+        <Route path="/write" element={<Write />} />
       </Routes>
   );
 }
