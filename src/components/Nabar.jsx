@@ -1,13 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
+import { faSearch, faPenToSquare} from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-light">
       <div className="container">
-        <a href="index.html" className="navbar-brand">Blog title</a>
+        <Link to={`/`} className="navbar-brand">Blog title</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -47,6 +46,13 @@ const Navbar = () => {
             </button>
           </form>
         </div>
+      </div>
+      <div className='mx-3'>
+        <Link to={`/write`}>
+          <button className="btn btn-primary">
+              <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" style={{ color: 'white' }} />
+          </button>
+        </Link>
       </div>
     </nav>
   );
