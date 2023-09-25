@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faComments } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
-const BlogPost = ({id,title,content,image,author}) => {
+const BlogPost = ({id,title,content,image,ShowReadMore}) => {
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>
@@ -35,8 +35,8 @@ const BlogPost = ({id,title,content,image,author}) => {
                 <p className="mb-0"><i className="fa fa-camera" aria-hidden="true"></i><span className="sr-only">Photo by:</span> Artist Name</p>
               </figcaption>
             </figure>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read more</Link>
+            <p>{content}</p>
+            {ShowReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }
           </article>
           <hr />
       </>
