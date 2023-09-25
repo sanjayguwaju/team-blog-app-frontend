@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faComments } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
-const BlogPost = ({id,title,content,image,ShowReadMore}) => {
+const BlogPost = ({id,title,content,image,author,ShowReadMore}) => {
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>
@@ -10,7 +10,7 @@ const BlogPost = ({id,title,content,image,ShowReadMore}) => {
             <header className="mb-2">
               <span className="badge bg-primary">Category</span>
               <h1><Link to={`/getpostbyid/${id}`}>{title}</Link></h1>
-              <div><a href="#0">Author Name</a></div>
+              <div><a href="#0">{author}</a></div>
               <div className="small">Posted on: <time dateTime="2017-03-12T10:24">March 12, 2017 at 10:24 AM</time></div>
               <div className="small">
                   <span className="badge bg-primary">
