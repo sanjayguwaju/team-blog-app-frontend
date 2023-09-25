@@ -5,6 +5,7 @@ import MainLayout from './components/MainLayout';
 import SinglePostLayout from './components/SinglePostLayout'; 
 import Write from './components/Write';
 import Register from './components/Register';
+import Card from './components/Card';
 
 function App() {
   return (
