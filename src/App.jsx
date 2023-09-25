@@ -4,6 +4,7 @@ import BlogPostByID from './pages/BlogPostByID';
 import MainLayout from './components/MainLayout';
 import Write from './components/Write';
 import Register from './components/Register';
+import Card from './components/Card';
 
 function App() {
   return (
