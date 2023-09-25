@@ -69,8 +69,6 @@ const BlogPost = ({ id, title, image, content, showTrimmedPost}) => {
             </p>
           </figcaption>
         </figure>
-        {/* {console.log("kkkkkkkkkkkkkkkk",summary)} */}
-        {console.log("kkkkkkkkkkkkkkkk",showTrimmedPost)}
         {showTrimmedPost ? <p>{summary}</p> : <p>{content}</p>}
         <Link to={`/getpostbyid/${id}`} className="btn btn-primary">
           Read more
