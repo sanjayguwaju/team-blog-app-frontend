@@ -1,4 +1,4 @@
-import { faSearch, faPenToSquare} from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
+import { faSearch, faPenToSquare,faUser} from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 import { Link } from 'react-router-dom';
 
@@ -47,10 +47,26 @@ const Navbar = () => {
           </form>
         </div>
       </div>
-      <div className='mx-3'>
-        <Link to={`/write`}>
+
+      <div className="d-flex">
+        <Link to="/write" className="mx-3">
           <button className="btn btn-primary">
-              <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" style={{ color: 'white' }} />
+            <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" style={{ color: 'white' }} />
+          </button>
+        </Link>
+        <Link to="/write" className="mx-3">
+          <button className="btn btn-primary">
+            <FontAwesomeIcon icon={faUser} aria-hidden="true" style={{ color: 'white' }} />
+          </button>
+        </Link>
+        <Link to="/register" className="mx-3">
+          <button className="btn btn-primary">
+            Register
+          </button>
+        </Link>
+        <Link to="/login" className="mx-3">
+          <button className="btn btn-primary">
+            Login
           </button>
         </Link>
       </div>
