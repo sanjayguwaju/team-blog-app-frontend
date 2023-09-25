@@ -7,6 +7,8 @@ import BlogPost from '../components/BlogPost'
 
 const Homepage = () => {
     const [posts, setPost] = useState([]);
+    const [showTrimmedPost, setshowTrimmedPost] = useState(true);
+    // console.log("showTrimmedPost ~~~~~~~~~~~>",showTrimmedPost)
   useEffect(() => {
     getAllBlogs(setPost);
 
@@ -32,7 +34,7 @@ const Homepage = () => {
     <>
       
         {posts.map(postdata => (
-          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} />
+          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} showTrimmedPost={showTrimmedPost} />
         ))}
         <Pagination />
     </>
