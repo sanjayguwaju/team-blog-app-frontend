@@ -20,7 +20,7 @@ const BlogPostByID = () => {
 
   return (
     <>
-      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} ShowReadMore={ShowReadMore}/>
+      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore}/>
     </>
   )
 }
