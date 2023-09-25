@@ -2,7 +2,7 @@
 
 const AboutAuthor = () => {
   return (
-    <div className="card" style={{ width: '18rem' }}>
+    <div className="card">
       <div className="card-body">
         <div className="text-center">
           <h5 className="card-title">Card title</h5>
