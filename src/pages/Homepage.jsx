@@ -5,7 +5,11 @@ import BlogPost from "../components/BlogPost";
 
 const Homepage = () => {
   const [posts, setPost] = useState([]);
+  const [ShowReadMore, setShowReadMore] = useState(false);
   useEffect(() => {
+    if (posts) {
+      setShowReadMore(true);
+    }
     getAllBlogs(setPost);
 
     const id = setInterval(() => {
@@ -35,7 +39,12 @@ const Homepage = () => {
           title={postdata.title}
           content={postdata.content}
           image={postdata.image}
-          author={postdata?.author?.name ? postdata?.author?.name : "no author is avaliable"}
+          ShowReadMore={ShowReadMore}
+          author={
+            postdata?.author?.name
+              ? postdata?.author?.name
+              : "no author is avaliable"
+          }
         />
       ))}
       <Pagination />

@@ -5,9 +5,13 @@ import BlogPost from "../components/BlogPost"
 
 const BlogPostByID = () => {
   const [postbyId, setPostById] = useState([]);
+  const [ShowReadMore, setShowReadMore] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
+    if(postbyId) {
+      setShowReadMore(false);
+    }
     axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
       .then(response => {
         setPostById(response.data);
@@ -16,7 +20,7 @@ const BlogPostByID = () => {
 
   return (
     <>
-      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name}/>
+      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore}/>
     </>
   )
 }
