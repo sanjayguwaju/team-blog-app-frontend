@@ -8,7 +8,6 @@ import BlogPost from '../components/BlogPost'
 const Homepage = () => {
     const [posts, setPost] = useState([]);
     const [showTrimmedPost, setshowTrimmedPost] = useState(true);
-    // console.log("showTrimmedPost ~~~~~~~~~~~>",showTrimmedPost)
   useEffect(() => {
     getAllBlogs(setPost);
 
