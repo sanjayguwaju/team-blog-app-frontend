@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faComments } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
-const BlogPost = ({id,title,content,image,ShowReadMore}) => {
+const BlogPost = ({id,title,content,image,author,ShowReadMore}) => {
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>

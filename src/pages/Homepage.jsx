@@ -4,10 +4,10 @@ import axios from "axios";
 import BlogPost from "../components/BlogPost";
 
 const Homepage = () => {
-    const [posts, setPost] = useState([]);
-    const [ShowReadMore, setShowReadMore] = useState(false);
+  const [posts, setPost] = useState([]);
+  const [ShowReadMore, setShowReadMore] = useState(false);
   useEffect(() => {
-    if(posts) {
+    if (posts) {
       setShowReadMore(true);
     }
     getAllBlogs(setPost);
@@ -32,11 +32,22 @@ const Homepage = () => {
 
   return (
     <>
-      
-        {posts.map(postdata => (
-          <BlogPost key={postdata._id} id={postdata._id} title={postdata.title} content={postdata.content} image={postdata.image} ShowReadMore={ShowReadMore}/>
-        ))}
-        <Pagination />
+      {posts.map((postdata) => (
+        <BlogPost
+          key={postdata._id}
+          id={postdata._id}
+          title={postdata.title}
+          content={postdata.content}
+          image={postdata.image}
+          ShowReadMore={ShowReadMore}
+          author={
+            postdata?.author?.name
+              ? postdata?.author?.name
+              : "no author is avaliable"
+          }
+        />
+      ))}
+      <Pagination />
     </>
   );
 };
