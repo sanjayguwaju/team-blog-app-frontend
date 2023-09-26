@@ -1,0 +1,90 @@
+/* Add this CSS to your component or an external CSS file */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .react-quill {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-check-input {
+    margin-right: 0.25rem;
+  }
+  
+  .form-check-label {
+    margin-left: 0.5rem;
+  }
+  
+  /* Additional styles for radio buttons */
+  .form-check-input:checked + .form-check-label {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Customize radio button appearance */
+  .form-check-input:checked + .form-check-label::before {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* Style the form-check divs */
+  .form-check {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .col-md-8,
+    .col-md-4 {
+      width: 100%;
+    }
+  }
+  
