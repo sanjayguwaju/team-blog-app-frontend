@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const PopularCard = () => {
     return (
-        <div className="col-3">
+        <div className="col-12">
             <h2 className="mb-3">Popular posts</h2>
             <div className="list-group mb-3">
                 <a href="#0" className="list-group-item list-group-item-action">
