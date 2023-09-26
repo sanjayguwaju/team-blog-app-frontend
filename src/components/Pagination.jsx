@@ -1,22 +1,45 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useState, useEffect } from 'react';
 
-const Pagination = () => {
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+    const [pageLinks, setPageLinks] = useState([]);
+
+    const generatePageLinks = () => {
+        const links = [];
+        for (let i = 1; i <= totalPages; i++) {
+            links.push(
+                <li className={`page-item ${i === currentPage ? 'active' : ''}`} key={i}>
+                    <a className="page-link" href="#" onClick={() => onPageChange(i)}>
+                        {i}
+                    </a>
+                </li>
+            );
+        }
+        setPageLinks(links);
+    };
+
+    useEffect(() => {
+        generatePageLinks();
+    }, [currentPage, totalPages]);
+
     return (
         <div>
             <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item disabled"><a class="page-link" href="#">&laquo; </a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                <ul className="pagination">
+                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`} key="previous">
+                        <a className="page-link" href="#" onClick={() => onPageChange(currentPage - 1)}>
+                            &laquo;
+                        </a>
+                    </li>
+                    {pageLinks}
+                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`} key="next">
+                        <a className="page-link" href="#" onClick={() => onPageChange(currentPage + 1)}>
+                            &raquo;
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
-    )
-}
+    );
+};
 
-export default Pagination
+export default Pagination;
