@@ -35,8 +35,8 @@ const BlogPost = ({id,title,content,image,author,ShowReadMore}) => {
                 <p className="mb-0"><i className="fa fa-camera" aria-hidden="true"></i><span className="sr-only">Photo by:</span> Artist Name</p>
               </figcaption>
             </figure>
-            <p>{content}</p>
-            {ShowReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+            {ShowReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }      
           </article>
           <hr />
       </>

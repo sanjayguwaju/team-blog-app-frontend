@@ -1,16 +1,14 @@
 import Card from "./Card";
-import PopularCard from "./PopularCard";
-import RecentCard from "./RecentCard";
 import Categories from "./Categories";
 import Newsletter from "./Newsletter";
 import RecentPostWidget from "./RecentPostWidget";
 import TagCloud from "./TagCloud";
-const Sidebar = () => {
+import AboutAuthor from "./AboutAuthor";
+const SidebarSinglePost = () => {
   return (
     <>
-      <PopularCard />
-      <RecentCard />
-      <br />
+      <AboutAuthor />
+      <br/>
       <Categories />
       <br />
       <TagCloud />
@@ -25,4 +23,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarSinglePost;
