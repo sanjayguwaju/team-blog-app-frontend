@@ -40,8 +40,13 @@ const BlogPost = ({id,title,content,image,author,ShowReadMore,showTrimmedPost}) 
                 <p className="mb-0"><i className="fa fa-camera" aria-hidden="true"></i><span className="sr-only">Photo by:</span> Artist Name</p>
               </figcaption>
             </figure>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            {showTrimmedPost ? <p>{summary}</p> : <p>{content}</p>}
+            <div>
+              {showTrimmedPost ? (
+               <div dangerouslySetInnerHTML={{ __html: summary }} />
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+              )}
+            </div>
             {ShowReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }
           </article>
           <hr />
