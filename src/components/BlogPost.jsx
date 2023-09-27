@@ -1,8 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faComments } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const BlogPost = ({id,title,content,image,author,ShowReadMore}) => {
+const BlogPost = ({id,title,content,image,author,ShowReadMore,showTrimmedPost}) => {
+    let summary = "";
+    if (typeof content === "string") {
+      const words = content.split(" ");
+      summary = words.slice(0, 50).join(" ");
+    }
     return (
       <>
           <h2 className="mb-3">Latest posts</h2>
@@ -35,7 +40,13 @@ const BlogPost = ({id,title,content,image,author,ShowReadMore}) => {
                 <p className="mb-0"><i className="fa fa-camera" aria-hidden="true"></i><span className="sr-only">Photo by:</span> Artist Name</p>
               </figcaption>
             </figure>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <div>
+              {showTrimmedPost ? (
+               <div dangerouslySetInnerHTML={{ __html: summary }} />
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+              )}
+            </div>
             {ShowReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }
           </article>
           <hr />
