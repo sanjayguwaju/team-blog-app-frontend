@@ -4,8 +4,9 @@ import axios from "axios";
 import BlogPost from "../components/BlogPost";
 
 const Homepage = () => {
-  const [posts, setPost] = useState([]);
-  const [ShowReadMore, setShowReadMore] = useState(false);
+    const [posts, setPost] = useState([]);
+    const [showTrimmedPost, setshowTrimmedPost] = useState(true);
+    const [ShowReadMore, setShowReadMore] = useState(false);
   useEffect(() => {
     if (posts) {
       setShowReadMore(true);
@@ -45,6 +46,7 @@ const Homepage = () => {
               ? postdata?.author?.name
               : "no author is avaliable"
           }
+          showTrimmedPost={showTrimmedPost}
         />
       ))}
       <Pagination />
