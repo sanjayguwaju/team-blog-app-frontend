@@ -5,6 +5,7 @@ import BlogPost from "../components/BlogPost"
 
 const BlogPostByID = () => {
   const [postbyId, setPostById] = useState([]);
+  const [showTrimmedPost, setshowTrimmedPost] = useState(false);
   const [ShowReadMore, setShowReadMore] = useState(true);
   const { id } = useParams();
 
@@ -20,7 +21,7 @@ const BlogPostByID = () => {
 
   return (
     <>
-      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore}/>
+      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore} showTrimmedPost={showTrimmedPost}/>
     </>
   )
 }
