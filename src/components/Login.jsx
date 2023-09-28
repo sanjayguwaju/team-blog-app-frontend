@@ -13,6 +13,7 @@ const Login = () => {
         axios
             .post(`${process.env.SERVER_URL}/users/login`, data)
             .then(response => {
+                localStorage.setItem('accessToken', response.data.accessToken);
                 if (response) {
                     setLoginStatus(true);
                 }
