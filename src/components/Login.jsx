@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Login.css";
@@ -23,6 +23,12 @@ const Login = () => {
                 setLoginStatus(false);
             });
     };
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        if(accessToken) {
+            setLoginStatus();
+        }
+    }, [setLoginStatus]);
     return (
         <>
             <section className="vh-100">
