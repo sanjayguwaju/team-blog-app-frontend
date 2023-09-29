@@ -50,7 +50,7 @@ const Login = () => {
                             <form onSubmit={handleSubmit}>
                                 {/* Email input */}
                                 <div className="d-flex flex-row align-items-center mb-4">
-                                    <label className="form-label" htmlFor="form3Example3">Email address</label>
+                                    <label className="form-label custom-label" htmlFor="form3Example3" style={{ width: '150px' }}>Email address</label>
                                     <input
                                         name="email"
                                         type="email"
@@ -60,7 +60,7 @@ const Login = () => {
                                 </div>
                                 {/* Password input */}
                                 <div className="d-flex flex-row align-items-center mb-4">
-                                    <label className="form-label" htmlFor="form3Example4">Password</label>
+                                    <label className="form-label custom-label" htmlFor="form3Example4" style={{ width: '150px' }}>Password</label>
                                     <input
                                         name="password"
                                         type="password"
