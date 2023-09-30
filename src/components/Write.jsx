@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
@@ -12,7 +13,28 @@ const Write = () => {
     const [tags, setTags] = useState([]);
     const [isDraft, setIsDraft] = useState(true);
     const [imageUrl, setImageUrl] = useState("");
-    console.log("imageUrl", imageUrl)
+    const [id, setId] = useState(null); // New state variable to store the ID of the blog post being edited
+    const { id: postId } = useParams(); // Get the ID parameter from the URL using useParams
+
+    useEffect(() => {
+        if (postId) {
+            // If the ID is present, fetch the blog post from the server and set the state variables
+            axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${postId}`)
+                .then((response) => {
+                    const { title, content, category, tags, image } = response.data;
+                    setTitle(title);
+                    setValue(content);
+                    setCat(category);
+                    setTags(tags);
+                    setImageUrl(image);
+                    setIsDraft(false);
+                    setId(postId);
+                })
+                .catch((error) => {
+                    console.error("Error fetching post:", error);
+                });
+        }
+    }, [postId]);
 
     const handleAddTag = (e) => {
         // Add the tag to the list of tags
@@ -24,8 +46,6 @@ const Write = () => {
         }
     };
 
-    // console.log("handleAddTag", tags)
-
     const handlePublish = () => {
         // Create a payload object with all the state variables
         const payload = {
@@ -36,17 +56,27 @@ const Write = () => {
             image: imageUrl,
         };
 
-        console.log("payload", payload)
-
-        // Send the payload to the server using axios.post
-        axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
-            .then((response) => {
-                console.log("Post created successfully:", response.data);
-                alert("Blog post added successfully!");
-            })
-            .catch((error) => {
-                console.error("Error creating post:", error);
-            });
+        if (id) {
+            // If the ID state variable is set, update the blog post with the specified ID
+            axios.put(`${process.env.SERVER_URL}/blogs/updateblog/${id}`, payload)
+                .then((response) => {
+                    console.log("Post updated successfully:", response.data);
+                    alert("Blog post updated successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error updating post:", error);
+                });
+        } else {
+            // If the ID state variable is not set, create a new blog post
+            axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
+                .then((response) => {
+                    console.log("Post created successfully:", response.data);
+                    alert("Blog post added successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error creating post:", error);
+                });
+        }
     };
 
     const handleSaveDraft = () => {

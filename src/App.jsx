@@ -22,6 +22,7 @@ function App() {
         <Route path="/write" element={<Write />} />
         <Route path="/register" element={<Register/>} />
         <Route path="/myblogs" element={<MyBlogs/>} />
+        <Route path="/updateblog/:id" element={<Write/>} />
       </Routes>
   );
 }
