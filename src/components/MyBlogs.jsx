@@ -1,26 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function MyBlogs() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [data, setData] = useState([
-        { sn: 1, blogPost: 'Sample Blog Post 1' },
-        { sn: 2, blogPost: 'Sample Blog Post 2' },
-        { sn: 3, blogPost: 'Sample Blog Post 3' },
-    ]);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${process.env.SERVER_URL}/blogs/getallblog`);
+                setData(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
     };
 
-    const handleDelete = (sn) => {
-        const updatedData = data.filter((item) => item.sn !== sn);
-        setData(updatedData);
+    const handleDelete = async (sn) => {
+        try {
+            await axios.delete(`${process.env.SERVER_URL}/blogs/deleteblog/${sn}`);
+            // Remove the deleted blog post from the data state
+            const updatedData = data.filter((item) => item.sn !== sn);
+            setData(updatedData);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     // Filter the data based on the search term
     const filteredData = data.filter((item) =>
-        item.blogPost.toLowerCase().includes(searchTerm.toLowerCase())
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -43,10 +59,10 @@ function MyBlogs() {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredData.map((item) => (
+                    {filteredData.map((item,index) => (
                         <tr key={item.sn}>
-                            <th scope="row">{item.sn}</th>
-                            <td>{item.blogPost}</td>
+                            <th scope="row">{index}</th>
+                            <td>{item.title}</td>
                             <td>
                                 <button className='btn btn-primary'>
                                     View
@@ -60,7 +76,7 @@ function MyBlogs() {
                             <td>
                                 <button
                                     className="btn btn-danger"
-                                    onClick={() => handleDelete(item.sn)}
+                                    onClick={() => handleDelete(item._id)}
                                 >
                                     Delete
                                 </button>
