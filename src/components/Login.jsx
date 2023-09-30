@@ -76,14 +76,14 @@ const Login = () => {
                                 {/* <!-- Email input --> */}
                                 <div className="form-outline mb-4">
                                     <label className="form-label" htmlFor="form3Example3">Email address</label>
-                                    <input type="email" id="form1" className="form-control form-control-lg"
+                                    <input type="email" id="form1" name = "name" className="form-control form-control-lg"
                                         placeholder="Enter a valid email address" />
                                 </div>
 
                                 {/* <!-- Password input --> */}
                                 <div className="form-outline mb-3">
                                     <label className="form-label" htmlFor="form3Example4">Password</label>
-                                    <input type="password" id="form2" className="form-control form-control-lg"
+                                    <input type="password" id="form2" name = "email" className="form-control form-control-lg"
                                         placeholder="Enter password" />
                                 </div>
 
