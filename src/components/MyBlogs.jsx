@@ -45,6 +45,10 @@ function MyBlogs() {
         navigate(`/updateblog/${id}`);
     };
 
+    const handleViewPost = (id) => {
+        navigate(`/getpostbyid/${id}`);
+    }
+
     return (
         <div className="container mt-5">
             <input
@@ -70,7 +74,10 @@ function MyBlogs() {
                             <th scope="row">{index}</th>
                             <td>{item.title}</td>
                             <td>
-                                <button className='btn btn-primary'>
+                                <button 
+                                    className='btn btn-primary'
+                                    onClick={() => handleViewPost(item._id)}
+                                >
                                     View
                                 </button>
                             </td>
