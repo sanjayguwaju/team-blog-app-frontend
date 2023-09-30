@@ -59,8 +59,8 @@ const Navbar = () => {
       </div>
 
       <div className="d-flex">
-        {isLoggedin && (
-          <div className="mx-3">
+        {isLoggedin ? (
+          <div className="mx-3 d-flex">
             <Link to="/write" className="mx-3">
               <button className="btn btn-primary">
                 <FontAwesomeIcon
@@ -114,18 +114,23 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
+        ):
+        (<>
+          <Link to="/register" className="mx-3">
+            <button className="btn btn-primary">
+              Register
+            </button>
+          </Link>
+          <Link to="/login" className="mx-3">
+            <button className="btn btn-primary">
+              Login
+            </button>
+          </Link>
+        </>
         )}
-        <Link to="/register" className="mx-3">
-          <button className="btn btn-primary">
-            Register
-          </button>
-        </Link>
-        <Link to="/login" className="mx-3">
-          <button className="btn btn-primary">
-            Login
-          </button>
-        </Link>
-      </div>
+        </div>
+
+
 
     </nav>
   );
