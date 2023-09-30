@@ -23,7 +23,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <a href="index.html" className="nav-link">Home</a>
+              <Link to="/">
+                <a className="nav-link">Home</a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a href="#0" className="nav-link dropdown-toggle active" id="blogDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
