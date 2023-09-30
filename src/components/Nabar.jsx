@@ -94,9 +94,11 @@ const Navbar = () => {
                 </Link>
                 <hr />
                 <li>
+                  <Link to="/myblogs">
                   <a className="dropdown-item" href="#option2">
                     My Blogs
                   </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#option3">
