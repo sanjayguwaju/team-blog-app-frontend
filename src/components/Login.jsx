@@ -3,9 +3,10 @@ import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Login.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 const Login = () => {
     const [loginStatus, setLoginStatus] = useState(null);
+    const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
@@ -17,6 +18,7 @@ const Login = () => {
                 if (response) {
                     setLoginStatus(true);
                 }
+                navigate("/");
             })
             .catch(error => {
                 console.log(error);

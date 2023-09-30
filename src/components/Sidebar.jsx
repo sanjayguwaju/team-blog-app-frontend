@@ -8,7 +8,9 @@ import TagCloud from "./TagCloud";
 const Sidebar = () => {
   return (
     <>
+      <br />
       <PopularCard />
+      <br />
       <RecentCard />
       <br />
       <Categories />

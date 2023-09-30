@@ -47,6 +47,7 @@ const Homepage = () => {
               : "no author is avaliable"
           }
           showTrimmedPost={showTrimmedPost}
+          category={postdata.category}
         />
       ))}
       <Pagination />

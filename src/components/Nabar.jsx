@@ -1,10 +1,20 @@
-import { faSearch, faPenToSquare,faUser} from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
+import { useEffect, useState } from 'react';
+import { faSearch, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 import { Link } from 'react-router-dom';
-
+import "./Navbar.css";
 const Navbar = () => {
+  const [isLoggedin, setIsLoggedin] = useState(!!localStorage.getItem('accessToken'));
+  const [isAccessTokenAvalible, setIsAccessTokenAvalible] = useState(!!localStorage.getItem('accessToken'));
+
+  useEffect(() => {
+    if (isAccessTokenAvalible) {
+      setIsLoggedin(true);
+    }
+  }, [isAccessTokenAvalible]);
+  
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-light">
+    <nav className="navbar navbar-expand-md navbar-light bg-light sticky-navbar">
       <div className="container">
         <Link to={`/`} className="navbar-brand"><strong>Blogsphere Nepal</strong></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +37,7 @@ const Navbar = () => {
             <li className="nav-item dropdown">
               <a href="#0" className="nav-link dropdown-toggle" id="archiveDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Archive</a>
               <div className="dropdown-menu" aria-labelledby="archiveDropdown">
-                <h6 className="dropdown-header">2017</h6>
+                <h6 className="dropdown-header">2023</h6>
                 {/* ... (same dropdown items) ... */}
                 <div className="dropdown-divider"></div>
                 <h6 className="dropdown-header">2016</h6>
@@ -49,16 +59,62 @@ const Navbar = () => {
       </div>
 
       <div className="d-flex">
-        <Link to="/write" className="mx-3">
-          <button className="btn btn-primary">
-            <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" style={{ color: 'white' }} />
-          </button>
-        </Link>
-        <Link to="/write" className="mx-3">
-          <button className="btn btn-primary">
-            <FontAwesomeIcon icon={faUser} aria-hidden="true" style={{ color: 'white' }} />
-          </button>
-        </Link>
+        {isLoggedin && (
+          <div className="mx-3">
+            <Link to="/write" className="mx-3">
+              <button className="btn btn-primary">
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  aria-hidden="true"
+                  style={{ color: "white" }}
+                />
+              </button>
+            </Link>
+            <div className="mx-3 dropdown">
+              <button
+                className="btn btn-primary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+                <span className="visually-hidden">Search</span>
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-end mx-3"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <Link to="/write">
+                  <li>
+                    <a className="dropdown-item" href="#option1">
+                      User Email
+                    </a>
+                  </li>
+                </Link>
+                <hr />
+                <li>
+                  <a className="dropdown-item" href="#option2">
+                    My Blogs
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#option3">
+                    Settings
+                  </a>
+                </li>
+                <hr />
+                <li>
+                  <button className="btn btn-primary">
+                    <a className="dropdown-item" href="#option3">
+                      Logout
+                    </a>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
         <Link to="/register" className="mx-3">
           <button className="btn btn-primary">
             Register
@@ -70,6 +126,7 @@ const Navbar = () => {
           </button>
         </Link>
       </div>
+
     </nav>
   );
 };
