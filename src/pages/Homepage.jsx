@@ -25,6 +25,7 @@ const Homepage = () => {
       .get(`${process.env.SERVER_URL}/blogs/getallblog`)
       .then((response) => {
         setPost(response.data);
+
       })
       .catch((error) => {
         console.log(error);
@@ -40,6 +41,7 @@ const Homepage = () => {
           title={postdata.title}
           content={postdata.content}
           image={postdata.image}
+          createdAt={postdata.createdAt}
           ShowReadMore={ShowReadMore}
           author={
             postdata?.author?.name
