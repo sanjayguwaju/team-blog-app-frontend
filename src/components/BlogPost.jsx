@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
-const BlogPost = ({id,title,content,image,author,ShowReadMore,showTrimmedPost}) => {
-    let summary = "";
+const BlogPost = ({id,title,content,image,createdAt,author,ShowReadMore,showTrimmedPost}) => {
+  const date = moment(createdAt).toDate();
+  const formattedDate = date.toLocaleDateString("en-US");
+  let summary = "";
     if (typeof content === "string") {
       const words = content.split(" ");
       summary = words.slice(0, 50).join(" ");
@@ -16,7 +19,7 @@ const BlogPost = ({id,title,content,image,author,ShowReadMore,showTrimmedPost}) 
               <span className="badge bg-primary">Category</span>
               <h1><Link to={`/getpostbyid/${id}`}>{title}</Link></h1>
               <div><a href="#0">{author}</a></div>
-              <div className="small">Posted on: <time dateTime="2017-03-12T10:24">March 12, 2017 at 10:24 AM</time></div>
+              <div className="small">Posted on: {formattedDate}</div>
               <div className="small">
                   <span className="badge bg-primary">
                     <FontAwesomeIcon icon={faThumbsUp} /> 13 <span className="visually-hidden">likes</span>
