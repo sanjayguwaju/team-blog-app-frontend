@@ -21,7 +21,7 @@ const BlogPostByID = () => {
 
   return (
     <>
-      <BlogPost title={postbyId.title} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore} showTrimmedPost={showTrimmedPost}/>
+      <BlogPost title={postbyId.title} createdAt={postbyId.createdAt} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore} showTrimmedPost={showTrimmedPost}/>
     </>
   )
 }
