@@ -3,32 +3,35 @@ import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Login.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const Login = () => {
     const [loginStatus, setLoginStatus] = useState(null);
-    const handleSubmit = (event) => {
+    const navigate = useNavigate(); // Use navigate with lowercase 'n'
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
-        axios
-            .post(`${process.env.SERVER_URL}/users/login`, data)
-            .then(response => {
-                localStorage.setItem('accessToken', response.data.accessToken);
-                if (response) {
-                    setLoginStatus(true);
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                setLoginStatus(false);
-            });
+
+        try {
+            const response = await axios.post(`${process.env.SERVER_URL}/users/login`, data);
+            localStorage.setItem('accessToken', response.data.accessToken);
+            setLoginStatus(true);
+            navigate('/'); // Redirect to the homepage after successful login
+        } catch (error) {
+            console.log(error);
+            setLoginStatus(false);
+        }
     };
+
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken');
-        if(accessToken) {
-            setLoginStatus();
+        if (accessToken) {
+            setLoginStatus(true);
         }
-    }, [setLoginStatus]);
+    }, []);
+
     return (
         <>
             <section className="vh-100">
@@ -86,7 +89,7 @@ const Login = () => {
                                 <a href="#!" className="text-body">Forgot password?</a>
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <button type="submit" className="btn btn-primary btn-lg" style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>Login</button>
-                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/" className="link-danger">Register</Link></p>
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/register" className="link-danger">Register</Link></p>
                                 </div>
                             </form>
                         </div>
