@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [loginStatus, setLoginStatus] = useState(null);
-    const navigate = useNavigate(); // Use navigate with lowercase 'n'
+    const navigate = useNavigate(); 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
