@@ -86,7 +86,7 @@ const Login = () => {
                                 <a href="#!" className="text-body">Forgot password?</a>
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <button type="submit" className="btn btn-primary btn-lg" style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>Login</button>
-                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/register" className="link-danger">Register</Link></p>
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/" className="link-danger">Register</Link></p>
                                 </div>
                             </form>
                         </div>
