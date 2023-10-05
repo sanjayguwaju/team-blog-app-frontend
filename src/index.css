@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+  }
+  
+  @font-face {
+    font-family: 'pixelify';
+    src: url('fonts\Helvetica Neue W01 66 Medium It.ttf');
+  }
+  
+  body {
+    font-family: 'Pixelify Sans', cursive;;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
