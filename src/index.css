@@ -4,12 +4,12 @@
   }
   
   @font-face {
-    font-family: 'pixelify';
-    src: url('fonts\Helvetica Neue W01 66 Medium It.ttf');
+    font-family: 'Lato';
+    src: url('https://fonts.googleapis.com/css2?family=Lato&family=Pixelify+Sans&family=Playfair+Display&display=swap');
   }
   
   body {
-    font-family: 'Pixelify Sans', cursive;;
+    font-family: 'Lato', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
