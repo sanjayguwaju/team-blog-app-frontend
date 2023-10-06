@@ -1,6 +1,7 @@
 import { faSearch, faPenToSquare,faUser} from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 import { Link } from 'react-router-dom';
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
@@ -72,35 +73,22 @@ const Navbar = () => {
               </button>
               <ul
                 className="dropdown-menu dropdown-menu-end mx-3"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <Link to="/write">
-                  <li>
-                    <a className="dropdown-item" href="#option1" style={{ textDecoration: 'none' }}> 
+                aria-labelledby="dropdownMenuButton">
+                  <li className="dropdown-item">
                       User Email
-                    </a>
                   </li>
-                </Link>
                 <hr />
-                <li>
-                  <Link to="/myblogs">
-                  <a className="dropdown-item" href="#option2" style={{ textDecoration: 'none' }}>
+                <li className="dropdown-item">
+                  <Link to="/myblogs" style={{ color: 'black' }}>
                     My Blogs
-                  </a>
                   </Link>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#option3">
+                </li >
+                <li className="dropdown-item">
                     Settings
-                  </a>
                 </li>
                 <hr />
-                <li>
-                  <button className="btn btn-primary">
-                    <a className="dropdown-item" href="#option3">
-                      Logout
-                    </a>
-                  </button>
+                <li  className="dropdown-item" style={{textAlign:'center'}}>
+                  <button className= "btn btn-primary">Logout</button>
                 </li>
               </ul>
             </div>
