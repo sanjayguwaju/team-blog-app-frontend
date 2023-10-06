@@ -49,16 +49,62 @@ const Navbar = () => {
       </div>
 
       <div className="d-flex">
-        <Link to="/write" className="mx-3">
-          <button className="btn btn-primary">
-            <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" style={{ color: 'white' }} />
-          </button>
-        </Link>
-        <Link to="/write" className="mx-3">
-          <button className="btn btn-primary">
-            <FontAwesomeIcon icon={faUser} aria-hidden="true" style={{ color: 'white' }} />
-          </button>
-        </Link>
+        <div className="mx-3 d-flex">
+            <Link to="/write" className="mx-3">
+              <button className="btn btn-primary">
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  aria-hidden="true"
+                  style={{ color: "white" }}
+                />
+              </button>
+            </Link>
+            <div className="mx-3 dropdown">
+              <button
+                className="btn btn-primary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+                <span className="visually-hidden">Search</span>
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-end mx-3"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <Link to="/write">
+                  <li>
+                    <a className="dropdown-item" href="#option1" style={{ textDecoration: 'none' }}> 
+                      User Email
+                    </a>
+                  </li>
+                </Link>
+                <hr />
+                <li>
+                  <Link to="/myblogs">
+                  <a className="dropdown-item" href="#option2" style={{ textDecoration: 'none' }}>
+                    My Blogs
+                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#option3">
+                    Settings
+                  </a>
+                </li>
+                <hr />
+                <li>
+                  <button className="btn btn-primary">
+                    <a className="dropdown-item" href="#option3">
+                      Logout
+                    </a>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
         <Link to="/register" className="mx-3">
           <button className="btn btn-primary">
             Register
