@@ -1,6 +1,11 @@
 const MyBlogs = () => {
   return (
     <div className="container mt-5">
+      <input
+        type="text"
+        className="form-control mb-3"
+        placeholder="Search Blog Posts"
+      />
       <table className="table">
         <thead>
           <tr>
