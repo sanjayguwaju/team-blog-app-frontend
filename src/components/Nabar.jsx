@@ -1,10 +1,11 @@
 import { faSearch, faPenToSquare,faUser} from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 import { Link } from 'react-router-dom';
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-light">
+    <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
       <div className="container">
         <Link to={`/`} className="navbar-brand"><strong>Blogsphere Nepal</strong></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,16 +50,49 @@ const Navbar = () => {
       </div>
 
       <div className="d-flex">
-        <Link to="/write" className="mx-3">
-          <button className="btn btn-primary">
-            <FontAwesomeIcon icon={faPenToSquare} aria-hidden="true" style={{ color: 'white' }} />
-          </button>
-        </Link>
-        <Link to="/write" className="mx-3">
-          <button className="btn btn-primary">
-            <FontAwesomeIcon icon={faUser} aria-hidden="true" style={{ color: 'white' }} />
-          </button>
-        </Link>
+        <div className="mx-3 d-flex">
+            <Link to="/write" className="mx-3">
+              <button className="btn btn-primary">
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  aria-hidden="true"
+                  style={{ color: "white" }}
+                />
+              </button>
+            </Link>
+            <div className="mx-3 dropdown">
+              <button
+                className="btn btn-primary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+                <span className="visually-hidden">Search</span>
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-end mx-3"
+                aria-labelledby="dropdownMenuButton">
+                  <li className="dropdown-item">
+                      User Email
+                  </li>
+                <hr />
+                <li className="dropdown-item">
+                  <Link to="/myblogs" style={{ color: 'black' }}>
+                    My Blogs
+                  </Link>
+                </li >
+                <li className="dropdown-item">
+                    Settings
+                </li>
+                <hr />
+                <li  className="dropdown-item" style={{textAlign:'center'}}>
+                  <button className= "btn btn-primary">Logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
         <Link to="/register" className="mx-3">
           <button className="btn btn-primary">
             Register
