@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+  }
+  
+  @font-face {
+    font-family: 'Lato';
+    src: url('https://fonts.googleapis.com/css2?family=Lato&family=Pixelify+Sans&family=Playfair+Display&display=swap');
+  }
+  
+  body {
+    font-family: 'Lato', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }

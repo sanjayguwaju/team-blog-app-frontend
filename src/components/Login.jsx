@@ -1,28 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Login.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const Login = () => {
     const [loginStatus, setLoginStatus] = useState(null);
-    const handleSubmit = (event) => {
+    const navigate = useNavigate(); 
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
-        axios
-            .post(`${process.env.SERVER_URL}/users/login`, data)
-            .then(response => {
-                localStorage.setItem('accessToken', response.data.accessToken);
-                if (response) {
-                    setLoginStatus(true);
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                setLoginStatus(false);
-            });
+
+        try {
+            const response = await axios.post(`${process.env.SERVER_URL}/users/login`, data);
+            localStorage.setItem('accessToken', response.data.accessToken);
+            setLoginStatus(true);
+            navigate('/'); // Redirect to the homepage after successful login
+        } catch (error) {
+            console.log(error);
+            setLoginStatus(false);
+        }
     };
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            setLoginStatus(true);
+        }
+    }, []);
     return (
         <>
             <section className="vh-100">
