@@ -11,7 +11,6 @@ const Homepage = () => {
   useEffect(() => {
     if (posts) {
       setShowReadMore(true);
-      setShowCommentSection(false);
     }
     getAllBlogs(setPost);
 
