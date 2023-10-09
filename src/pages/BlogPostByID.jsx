@@ -7,11 +7,13 @@ const BlogPostByID = () => {
   const [postbyId, setPostById] = useState([]);
   const [showTrimmedPost, setshowTrimmedPost] = useState(false);
   const [ShowReadMore, setShowReadMore] = useState(true);
+  const [showCommentSection, setShowCommentSection] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     if(postbyId) {
       setShowReadMore(false);
+      setShowCommentSection(true);
     }
     axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
       .then(response => {
@@ -21,7 +23,7 @@ const BlogPostByID = () => {
 
   return (
     <>
-      <BlogPost title={postbyId.title} createdAt={postbyId.createdAt} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore} showTrimmedPost={showTrimmedPost}/>
+      <BlogPost title={postbyId.title} createdAt={postbyId.createdAt} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore} showTrimmedPost={showTrimmedPost} showCommentSection={showCommentSection}/>
     </>
   )
 }
