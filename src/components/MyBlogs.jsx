@@ -1,4 +1,27 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 const MyBlogs = () => {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate() ;
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await axios.get(`${process.env.SERVER_URL}/blogs/getallblog`);
+              setData(response.data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+
+      fetchData();
+  }, []);
+  
+  const handleUpdate = (id) => {
+    navigate(`/updateblog/${id}`);
+};
   return (
     <div className="container mt-5">
       <input
@@ -24,7 +47,7 @@ const MyBlogs = () => {
               <button className="btn btn-primary">View</button>
             </td>
             <td>
-              <button className="btn btn-primary">Update</button>
+              <button className="btn btn-primary" onClick={() => handleUpdate(item._id)}>Update</button>
             </td>
             <td>
               <button className="btn btn-danger">Delete</button>
