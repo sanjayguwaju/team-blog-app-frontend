@@ -1,4 +1,25 @@
-const MyBlogs = () => {
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+function MyBlogs() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        const getBlogs = async () => {
+            try {
+                const res = await axios.get(`${process.env.SERVER_URL}/blogs/getallblog`);
+                setBlogs(res.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getBlogs();
+    },[]);
+
+    const filteredBlogs = blogs.filter((item) => 
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   return (
     <div className="container mt-5">
       <input
@@ -17,9 +38,10 @@ const MyBlogs = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>S.N.</td>
-            <td>BlogPosts</td>
+            {filteredBlogs.map((item, index) => (
+          <tr key ={item.sn}>
+            <th scope="row">{index}</th>
+            <td>{item.title}</td>
             <td>
               <button className="btn btn-primary">View</button>
             </td>
@@ -30,10 +52,11 @@ const MyBlogs = () => {
               <button className="btn btn-danger">Delete</button>
             </td>
           </tr>
+            ))}
         </tbody>
       </table>
     </div>
   );
-};
+}
 
 export default MyBlogs;
