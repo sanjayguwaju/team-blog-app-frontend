@@ -7,6 +7,7 @@ const Homepage = () => {
     const [posts, setPost] = useState([]);
     const [showTrimmedPost, setshowTrimmedPost] = useState(true);
     const [ShowReadMore, setShowReadMore] = useState(false);
+    const [showCommentSection, setShowCommentSection] = useState(false);
   useEffect(() => {
     if (posts) {
       setShowReadMore(true);
@@ -49,6 +50,7 @@ const Homepage = () => {
               : "no author is avaliable"
           }
           showTrimmedPost={showTrimmedPost}
+          showCommentSection={showCommentSection}
         />
       ))}
       <Pagination />
