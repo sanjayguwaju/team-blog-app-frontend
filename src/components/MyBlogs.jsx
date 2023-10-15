@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function MyBlogs() {
     const [searchTerm, setSearchTerm] = useState('');
     const [blogs, setBlogs] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getBlogs = async () => {
@@ -17,9 +19,14 @@ function MyBlogs() {
         getBlogs();
     },[]);
 
-    const filteredBlogs = blogs.filter((item) => 
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const filteredBlogs = blogs.filter((item) => 
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleUpdate =  (id) => {
+    navigate(`/updateblog/${id}`);
+  };
+
   return (
     <div className="container mt-5">
       <input
@@ -46,7 +53,10 @@ function MyBlogs() {
               <button className="btn btn-primary">View</button>
             </td>
             <td>
-              <button className="btn btn-primary">Update</button>
+              <button 
+                className="btn btn-primary"
+                onClick={() => handleUpdate(item._id)}
+                >Update</button>  
             </td>
             <td>
               <button className="btn btn-danger">Delete</button>
