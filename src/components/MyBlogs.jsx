@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const MyBlogs = () => {
-  const [data, setData] = useState([]);
+  const [blogPosts, setBlogPosts] = useState([]);
   const navigate = useNavigate() ;
 
   useEffect(() => {
       const fetchData = async () => {
           try {
               const response = await axios.get(`${process.env.SERVER_URL}/blogs/getallblog`);
-              setData(response.data);
+              setBlogPosts(response.data);
           } catch (error) {
               console.error(error);
           }
@@ -19,9 +19,14 @@ const MyBlogs = () => {
       fetchData();
   }, []);
   
-  const handleUpdate = (id) => {
-    navigate(`/updateblog/${id}`);
-};
+    const handleUpdate = (id) => {
+        navigate(`/updateblog/${id}`);
+    };
+
+    const handleViewPost = (id) => {
+        navigate(`/getpostbyid/${id}`);
+    }
+
   return (
     <div className="container mt-5">
       <input
@@ -40,19 +45,21 @@ const MyBlogs = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>S.N.</td>
-            <td>BlogPosts</td>
-            <td>
-              <button className="btn btn-primary">View</button>
-            </td>
-            <td>
-              <button className="btn btn-primary" onClick={() => handleUpdate(item._id)}>Update</button>
-            </td>
-            <td>
-              <button className="btn btn-danger">Delete</button>
-            </td>
-          </tr>
+          {blogPosts.map((post, index) =>(
+          <tr key={post.id}>
+          <td>{index + 1}</td>
+          <td>{post.title}</td>
+          <td>
+            <button className="btn btn-primary"  onClick={() => handleViewPost(item._id)}>View</button>
+          </td>
+          <td>
+            <button className="btn btn-primary" onClick={() => handleUpdate(item._id)}>Update</button>
+          </td>
+          <td>
+            <button className="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+          ))}
         </tbody>
       </table>
     </div>
