@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyBlogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate() ;
 
   useEffect(() => {
@@ -18,8 +19,26 @@ const MyBlogs = () => {
 
       fetchData();
   }, []);
+
   
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  
+  const filteredBlogs = blogPosts.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${process.env.SERVER_URL}/blogs/deleteblog/${id}`);
+      setBlogPosts(blogPosts.filter((posts) => posts._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
     const handleUpdate = (id) => {
+  
         navigate(`/updateblog/${id}`);
     };
 
@@ -33,6 +52,8 @@ const MyBlogs = () => {
         type="text"
         className="form-control mb-3"
         placeholder="Search Blog Posts"
+        value={searchTerm}
+        onChange={handleSearch}
       />
       <table className="table">
         <thead>
@@ -45,18 +66,21 @@ const MyBlogs = () => {
           </tr>
         </thead>
         <tbody>
-          {blogPosts.map((post, index) =>(
-          <tr key={post.id}>
+          {filteredBlogs.map((post, index) =>(
+      
+          <tr key={post.id}
+          >
+          { console.log("this is post", post)}
           <td>{index + 1}</td>
           <td>{post.title}</td>
           <td>
-            <button className="btn btn-primary"  onClick={() => handleViewPost(item._id)}>View</button>
+            <button className="btn btn-primary"  onClick={() => handleViewPost(post._id)}>View</button>
           </td>
           <td>
-            <button className="btn btn-primary" onClick={() => handleUpdate(item._id)}>Update</button>
+            <button className="btn btn-primary" onClick={() => handleUpdate(post._id)}>Update</button>
           </td>
           <td>
-            <button className="btn btn-danger">Delete</button>
+            <button className="btn btn-danger" onClick={() => handleDelete(post._id)}>Delete</button>
           </td>
         </tr>
           ))}
