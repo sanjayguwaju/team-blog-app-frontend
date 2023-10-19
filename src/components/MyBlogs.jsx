@@ -36,15 +36,13 @@ function MyBlogs() {
     navigate(`/getpostbyid/${id}`);
   };
 
-  const handleDelete = async (id) =>{
-    try{
-      const res = await axios.delete(`${process.env.SERVER_URL}/blogs/deleteblog/${id}`);
-      const updatedBlogs = blogs.filter((item) => item.id !== id);
-      setBlogs(updatedBlogs);
-      window.location.reload();
-    } catch (error){
-       console.log(error);
-    } 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${process.env.SERVER_URL}/blogs/deleteblog/${id}`);
+      setBlogs(blogs.filter((item) => item._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
