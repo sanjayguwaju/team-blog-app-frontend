@@ -3,6 +3,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Navbar from "./Nabar";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const Write = () => {
     const [value, setValue] = useState("");
@@ -12,7 +14,21 @@ const Write = () => {
     const [tags, setTags] = useState([]);
     const [isDraft, setIsDraft] = useState(true);
     const [imageUrl, setImageUrl] = useState("");
-    console.log("imageUrl", imageUrl)
+    const [PostById, setPostById] = useState("");
+    const { id } = useParams();
+
+    useEffect(() => {
+        axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
+          .then(response => {
+            const{title, content, image, category, tags} = response.data;
+            setTitle(title);
+            setValue(content);
+            setImageUrl(image);
+            setCat(category);
+            setTags(tags);
+            setPostById(response.data);
+          })
+      }, [id]);
 
     const handleAddTag = (e) => {
         // Add the tag to the list of tags
@@ -47,6 +63,7 @@ const Write = () => {
             .catch((error) => {
                 console.error("Error creating post:", error);
             });
+
     };
 
     const handleSaveDraft = () => {
