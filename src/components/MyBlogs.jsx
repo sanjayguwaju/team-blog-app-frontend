@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 function MyBlogs() {
     const [searchTerm, setSearchTerm] = useState('');
     const [blogs, setBlogs] = useState([]);
@@ -19,6 +20,10 @@ function MyBlogs() {
         getBlogs();
     },[]);
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };  
+
   const filteredBlogs = blogs.filter((item) => 
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -27,12 +32,29 @@ function MyBlogs() {
     navigate(`/updateblog/${id}`);
   };
 
+  const handleView = (id) => {
+    navigate(`/getpostbyid/${id}`);
+  };
+
+  const handleDelete = async (id) =>{
+    try{
+      const res = await axios.delete(`${process.env.SERVER_URL}/blogs/deleteblog/${id}`);
+      const updatedBlogs = blogs.filter((item) => item.id !== id);
+      setBlogs(updatedBlogs);
+      window.location.reload();
+    } catch (error){
+       console.log(error);
+    } 
+  };
+
   return (
     <div className="container mt-5">
       <input
         type="text"
         className="form-control mb-3"
         placeholder="Search Blog Posts"
+        value={searchTerm}
+        onChange={handleSearch}
       />
       <table className="table">
         <thead>
@@ -50,7 +72,10 @@ function MyBlogs() {
             <th scope="row">{index}</th>
             <td>{item.title}</td>
             <td>
-              <button className="btn btn-primary">View</button>
+              <button 
+                className="btn btn-primary"
+                onClick={() => handleView(item._id)}
+              >View</button>
             </td>
             <td>
               <button 
@@ -59,7 +84,10 @@ function MyBlogs() {
                 >Update</button>  
             </td>
             <td>
-              <button className="btn btn-danger">Delete</button>
+              <button 
+                className="btn btn-danger"
+                onClick={() => handleDelete(item._id)}
+                >Delete</button>
             </td>
           </tr>
             ))}
