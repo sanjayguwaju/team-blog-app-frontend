@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import axios from "axios";
 import BlogPost from "../components/BlogPost";
+import Loader from "../components/Loader/Loader";
 
 const Homepage = () => {
     const [posts, setPost] = useState([]);
     const [showTrimmedPost, setshowTrimmedPost] = useState(true);
     const [ShowReadMore, setShowReadMore] = useState(false);
     const [showCommentSection, setShowCommentSection] = useState(false);
+    const [isLoader, setIsLoader] = useState(true);
   useEffect(() => {
     if (posts) {
       setShowReadMore(true);
@@ -26,6 +28,7 @@ const Homepage = () => {
       .get(`${process.env.SERVER_URL}/blogs/getallblog`)
       .then((response) => {
         setPost(response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
+        setIsLoader(false);
 
       })
       .catch((error) => {
@@ -53,6 +56,7 @@ const Homepage = () => {
           showCommentSection={showCommentSection}
         />
       ))}
+      {isLoader  && <Loader/> }
       <Pagination />
     </>
   );
