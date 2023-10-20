@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Navbar from "./Nabar";
+import { toast } from 'react-toastify';
 
 const Write = () => {
     const [value, setValue] = useState("");
@@ -39,12 +40,12 @@ const Write = () => {
         console.log("payload", payload)
 
         // Send the payload to the server using axios.post
-        axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
-            .then((response) => {
-                console.log("Post created successfully:", response.data);
-                alert("Blog post added successfully!");
+        axios.post(`${process.env.SERVER_URL}/blogs/createblogs`, payload)
+            .then(() => {
+                toast("Blog post added successfully!");
             })
             .catch((error) => {
+                toast("Error adding blog post");
                 console.error("Error creating post:", error);
             });
     };
