@@ -1,9 +1,9 @@
-import { useState,useEffect } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import Navbar from "./Nabar";
+import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Navbar from "./Nabar";
 
 
 const Write = () => {
@@ -57,12 +57,12 @@ const Write = () => {
 
         // Send the payload to the server using axios.post
         axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
-            .then((response) => {
-                console.log("Post created successfully:", response.data);
-                alert("Blog post added successfully!");
+            .then(() => {
+                toast("Blog post added successfully")
             })
             .catch((error) => {
-                console.error("Error creating post:", error);
+                console.log(error)
+                toast("Failed to add blog. Please try again")
             });
     };
 
