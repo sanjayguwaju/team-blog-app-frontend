@@ -1,0 +1,11 @@
+.loader-container {
+    position: absolute;  /* This ensures it covers the entire viewport */
+    top: 50%;
+    left: 28%;
+    display: flex;
+  }
+
+
+  .loaders {
+  }
+  
