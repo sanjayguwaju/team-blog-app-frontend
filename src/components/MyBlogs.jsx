@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 function MyBlogs() {
@@ -40,8 +41,10 @@ function MyBlogs() {
     try {
       await axios.delete(`${process.env.SERVER_URL}/blogs/deleteblog/${id}`);
       setBlogs(blogs.filter((item) => item._id !== id));
+      toast.success("Blog Deleted Successfully");
     } catch (error) {
       console.error(error);
+      toast.error("Blog Deletion Failed");
     }
   };
 
