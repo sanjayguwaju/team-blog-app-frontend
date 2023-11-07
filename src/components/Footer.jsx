@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
         <ul className="list-inline text-center">
-          <li className="list-inline-item">&copy; 2017 Blog Name</li>
+          <li className="list-inline-item">&copy; {new Date().getFullYear()} Blog Name</li>
           <li className="list-inline-item">All rights reserved.</li>
           <li className="list-inline-item"><a href="#0">Terms of use and privacy policy</a>.</li>
         </ul>
