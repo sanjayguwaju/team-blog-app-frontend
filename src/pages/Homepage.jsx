@@ -25,6 +25,7 @@ const Homepage = () => {
     axios
       .get(`${process.env.SERVER_URL}/blogs/getallblog`)
       .then((response) => {
+        console.log("response ~~~~~>",response);
         setPost(response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
 
       })
