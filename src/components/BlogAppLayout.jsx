@@ -1,6 +1,6 @@
 // BlogLayout.js
 import PropTypes from 'prop-types';
-import Navbar from './Nabar'; 
+import Navbar from './Navbar'; 
 import Footer from './Footer'; 
 
 const BlogLayout = ({ children }) => {
