@@ -34,13 +34,13 @@ const Login = () => {
     return (
         <>
             <section className="vh-100">
-                <div className="container-fluid h-custom">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
-                        <div className="col-md-9 col-lg-6 col-xl-5">
+                <div className="container-fluid h-auto">
+                    <div className="row row_first d-flex justify-content-center align-items-center">
+                        <div className=" col-md-9 col-lg-6 col-xl-5">
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" className="hero_image img-fluid" alt="Sample image" />
                         </div>
-                        <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                            <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mt-5 mt-md-0">
+                        <div className="section-form col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                            <div className="signin-section d-flex flex-row align-items-center justify-content-center justify-content-lg-start mt-5 mt-md-0">
                                 <p className="hero_text lead fw-normal mb-0 me-3">Sign in with</p>
                                 <button type="button" className="icon_button btn btn-primary btn-floating mx-1">
                                     <FontAwesomeIcon icon={faFacebook} />
@@ -52,7 +52,7 @@ const Login = () => {
                                     <FontAwesomeIcon icon={faLinkedin} />
                                 </button>
                             </div>
-                            <div className="divider d-flex align-items-center my-4">
+                            <div className="divider d-flex align-items-center mt-3 mt-sm-4 mb-4 mb-sm-5">
                                 <p className="text-center fw-bold mx-3 mb-0">Or</p>
                             </div>
                             <form className='ms-md-0 ms-3 me-3 me-md-0' onSubmit={handleSubmit}>
@@ -76,9 +76,9 @@ const Login = () => {
                                         className="form-control form-control-lg"
                                         placeholder="Enter password" />
                                 </div>
-                                <div className="d-flex flex-row align-items-center mb-4 d-flex justify-content-between">
+                                <div className="checkbox_text   align-items-center mt-4  d-flex justify-content-between">
                                     {/* Checkbox */}
-                                    <div className="form-check mb-0">
+                                    <div className="form-check mt-4 mt-sm-0 mb-3 mb-sm-0">
                                         <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                                         <label className="form-check-label" htmlFor="form2Example3">
                                             Remember me
@@ -89,7 +89,7 @@ const Login = () => {
                                 
                                 <div className="d-flex flex-column align-items-center mb-4 mt-4 ">
                                     <button type="submit" className="hero_button btn btn-primary btn-lg">Login</button>
-                                    <span>  <p className="d-flex small fw-bold mt-2 pt-1 ms-4 mb-0">Don't have an account?<Link to="/register" className="link-danger ms-2">Register</Link></p></span>
+                                    <span>  <p className="register-text d-flex small fw-bold  mt-4 mt-sm-3 mt-xl-4 pt-1 ms-4 mb-0">Don't have an account?<Link to="/register" className="link-danger ms-2">Register</Link></p></span>
                                 </div>
                             </form>
                         </div>

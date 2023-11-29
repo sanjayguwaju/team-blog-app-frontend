@@ -1,103 +1,102 @@
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
 }
 .h-custom {
-height: calc(100% - 73px);
+  height: calc(100% - 73px);
 }
-.register-text{
-    display: flex;
-    flex-direction: row;
+.register-text {
+  display: flex;
+  flex-direction: row;
 }
-.hero_button{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+.hero_button {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
-.checkbox_text{
-    margin-top: 50px;
+.checkbox_text {
+  margin-top: 50px;
 }
-.row_first{
-    padding-top: 70px;
-    padding-bottom: 70px;
+.row_first {
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
-.section-form{
-    padding-top: 80px;
+.section-form {
+  padding-top: 80px;
 }
-.checkbox_text{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 35px;
+.checkbox_text {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 35px;
 }
 @media (max-width: 375px) {
-.checkbox_text{
+  .checkbox_text {
     display: flex;
     flex-direction: column;
     margin-bottom: 45px;
-}
-.register-text{
+  }
+  .register-text {
     display: flex;
     flex-direction: column;
     text-align: center;
-}
+  }
 }
 @media (max-width: 576px) {
-.h-custom {
-height: 100%;
-}
-.section-form{
+  .h-custom {
+    height: 100%;
+  }
+  .section-form {
     padding-top: 40px;
-}
-.row_first{
+  }
+  .row_first {
     padding-top: 50px;
     padding-bottom: 10px;
-}
-.hero_text{
+  }
+  .hero_text {
     font-size: 14px;
-}
-.icon_button{
+  }
+  .icon_button {
     height: 38px;
     width: 40px;
-}
-::placeholder { 
+  }
+  ::placeholder {
     font-size: 16px;
   }
-.hero_button{
+  .hero_button {
     width: 80px;
     height: 40px;
     font-size: 14px;
     font-weight: bold;
     padding-left: 20px;
     padding-right: 20px;
-}
-.footer_text{
+  }
+  .footer_text {
     font-size: 14px;
-}
+  }
 }
 
 @media screen and (max-width: 768px) and (min-width: 576px) {
-    .section-form{
-        width: 540px;
-    }
-
+  .section-form {
+    width: 540px;
   }
-  @media screen and (max-width: 992px) and (min-width: 768px) {
-    .section-form{
-        width: 588px;
-    }
-    .checkbox_text{
-        margin-bottom: 45px;
-        margin-top: 47px!important;
-    }
-    .hero_button{
-        margin-bottom: 20px;
-    }
-    .signin-section{
-        margin-bottom: 40px;
-    }
-    .hero_text{
-        margin-bottom: 1.70rem!important;
-    }
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .section-form {
+    width: 588px;
   }
+  .checkbox_text {
+    margin-bottom: 45px;
+    margin-top: 47px !important;
+  }
+  .hero_button {
+    margin-bottom: 20px;
+  }
+  .signin-section {
+    margin-bottom: 40px;
+  }
+  .hero_text {
+    margin-bottom: 1.7rem !important;
+  }
+}
