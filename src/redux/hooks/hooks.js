@@ -10,3 +10,8 @@ export function useCounter() {
 
   return { count, incrementCount, decrementCount };
 }
+
+export function useBlogPost() {
+  const blogPostState = useSelector(state => state.blogPost)
+  return { blogPostState };
+}

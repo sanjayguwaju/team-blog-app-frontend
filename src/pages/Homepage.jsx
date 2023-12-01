@@ -3,12 +3,16 @@ import Pagination from "../components/Pagination";
 import axios from "axios";
 import BlogPost from "../components/BlogPost";
 import { useGetBlogsQuery } from "../features/api/apiSlice";
+import { useBlogPost } from '../redux/hooks/hooks';
+
+
 
 const Homepage = () => {
     const [posts, setPost] = useState([]);
     const [showTrimmedPost, setshowTrimmedPost] = useState(true);
     const [ShowReadMore, setShowReadMore] = useState(false);
     const [showCommentSection, setShowCommentSection] = useState(false);
+
   useEffect(() => {
     if (posts) {
       setShowReadMore(true);
@@ -22,15 +26,14 @@ const Homepage = () => {
     return () => clearInterval(id);
   }, []);
 
-  const { data, isLoading, isSuccess, isError, error } = useGetBlogsQuery();
-  console.log("data ----> ", data)
+  const { data: allBlogData, isLoading, isSuccess, isError, error } = useGetBlogsQuery();
+  console.log("allBlogData ----> ", allBlogData)
 
   function getAllBlogs(setPost) {
     axios
       .get(`${process.env.SERVER_URL}/blogs/getallblog`)
       .then((response) => {
         setPost(response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
-
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +42,7 @@ const Homepage = () => {
 
   return (
     <>
-      {posts.map((postdata) => (
+      {allBlogData?.map((postdata) => (
         <BlogPost
           key={postdata._id}
           id={postdata._id}
@@ -47,14 +50,11 @@ const Homepage = () => {
           content={postdata.content}
           image={postdata.image}
           createdAt={postdata.createdAt}
-          ShowReadMore={ShowReadMore}
           author={
             postdata?.author?.name
               ? postdata?.author?.name
               : "no author is avaliable"
           }
-          showTrimmedPost={showTrimmedPost}
-          showCommentSection={showCommentSection}
         />
       ))}
       <Pagination />

@@ -3,8 +3,13 @@ import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import CommentSection from "./CommentSection"
+import { useBlogPost } from '../redux/hooks/hooks';
 
-const BlogPost = ({id,title,content,image,createdAt,author,ShowReadMore,showTrimmedPost,showCommentSection}) => {
+const BlogPost = ({id,title,content,image,createdAt,author}) => {
+
+  const { blogPostState } = useBlogPost();
+  console.log("blogAppss",blogPostState);
+
   const date = moment(createdAt).toDate();
   const formattedDate = date.toLocaleDateString("en-US");
   let summary = "";
@@ -45,16 +50,16 @@ const BlogPost = ({id,title,content,image,createdAt,author,ShowReadMore,showTrim
               </figcaption>
             </figure>
             <div>
-              {showTrimmedPost ? (
+              {blogPostState.showTrimmedPost ? (
                <div dangerouslySetInnerHTML={{ __html: summary }} />
               ) : (
                 <div dangerouslySetInnerHTML={{ __html: content }} />
               )}
             </div>
-            {ShowReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }
+            {blogPostState.showReadMore && <Link to={`/getpostbyid/${id}`} className="btn btn-primary">Read More</Link> }
           </article>
           <hr />
-          {showCommentSection && <CommentSection/>}
+          {blogPostState.showCommentSection && <CommentSection/>}
     </>
     );
   };
