@@ -7,9 +7,20 @@ import SinglePostLayout from './components/SinglePostLayout';
 import Write from './components/Write';
 import Register from './components/Register';
 import MyBlogs from './components/MyBlogs';
+import { useCounter } from '../src/redux/hooks/hooks';
 
 function App() {
+  const { count, incrementCount, decrementCount } = useCounter();
   return (
+    <>
+      <div>
+        <br />
+        <br />
+        <br />
+        <button onClick={decrementCount}>Decrement</button>
+        <span>{count}</span>
+        <button onClick={incrementCount}>Increment</button>
+      </div>
       <Routes>
         <Route path="/" element={<MainLayout />}>
             <Route index element={<Homepage />} />
@@ -23,6 +34,7 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/updateblog/:id" element={<Write />} />
       </Routes>
+    </>
   );
 }
 

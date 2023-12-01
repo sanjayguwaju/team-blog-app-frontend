@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import axios from "axios";
 import BlogPost from "../components/BlogPost";
+import { useGetBlogsQuery } from "../features/api/apiSlice";
 
 const Homepage = () => {
     const [posts, setPost] = useState([]);
@@ -21,11 +22,13 @@ const Homepage = () => {
     return () => clearInterval(id);
   }, []);
 
+  const { data, isLoading, isSuccess, isError, error } = useGetBlogsQuery();
+  console.log("data ----> ", data)
+
   function getAllBlogs(setPost) {
     axios
       .get(`${process.env.SERVER_URL}/blogs/getallblog`)
       .then((response) => {
-        console.log("response ~~~~~>",response);
         setPost(response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
 
       })
