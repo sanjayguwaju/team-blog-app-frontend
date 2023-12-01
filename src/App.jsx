@@ -11,6 +11,7 @@ import { useCounter } from '../src/redux/hooks/hooks';
 
 function App() {
   const { count, incrementCount, decrementCount } = useCounter();
+
   return (
     <>
       <div>

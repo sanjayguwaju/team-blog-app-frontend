@@ -2,12 +2,17 @@ import { faSearch, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
 import { Link } from 'react-router-dom';
 import "./Navbar.css";
+import { useCounter } from '../redux/hooks/hooks';
+
 
 const Navbar = () => {
+  const { count } = useCounter();
+  const multipliedCount = count * 10;
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div className="container">
+          
           <Link to={`/`} className="navbar-brand"><strong>Blogsphere Nepal</strong></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -91,6 +96,7 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
+            <h1>{multipliedCount}</h1>
             <div className="d-flex justify-content-between">
               <Link to="/register" className="mx-3">
                 <button className="btn btn-primary">
