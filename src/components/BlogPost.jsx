@@ -1,32 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import moment from "moment";
+import { formatDate, createSummary } from '../services/utility.services';
 import CommentSection from "./CommentSection"
 import { useBlogPost } from '../redux/hooks/hooks';
 import { useSelector } from 'react-redux';
-import { useCounter } from '../redux/hooks/hooks';
 
 
 const BlogPost = () => {
-  const { count } = useCounter();
-  const multipliedCountTwenty = count * 20;
   const blogData = useSelector(state => state.blogData);
   const { blogPostState } = useBlogPost();
 
   return (
     <>
       <h2 className="mb-3">Latest posts</h2>
-      <h1>{multipliedCountTwenty}</h1>
       {blogData?.map((post) => {
-        const date = moment(post.createdAt).toDate();
-        const formattedDate = date.toLocaleDateString("en-US");
-        let summary = "";
-        if (typeof post.content === "string") {
-          const words = post.content.split(" ");
-          summary = words.slice(0, 50).join(" ");
-        }
-
+        const formattedDate = formatDate(post.createdAt);
+        const summary = createSummary(post.content);
         return (
           <article className="mb-3" key={post._id}>
             <header className="mb-2">
