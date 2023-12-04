@@ -1,11 +1,14 @@
-import { createApi , fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiSlice = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({baseUrl: process.env.SERVER_URL}),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVER_URL }),
     endpoints: (builder) => ({
         getBlogs: builder.query({
-            query: ()=> '/blogs/getallblog'
+            query: () => '/blogs/getallblog'
+        }),
+        getBlogPostById: builder.query({
+            query: (id) => `blogs/getblogpostbyid/${id}`,
         }),
         addBlogs: builder.mutation({
             query: (payload) => ({
@@ -15,7 +18,7 @@ export const apiSlice = createApi({
             })
         }),
         updateBlogs: builder.mutation({
-            query: (payload)=> ({
+            query: (payload) => ({
                 url: `/update/${payload.id}`,
                 method: 'PUT',
                 body: payload
@@ -30,18 +33,18 @@ export const apiSlice = createApi({
         }),
         register: builder.mutation({
             query: (data) => ({
-              url: '/users/register',
-              method: 'POST',
-              body: data,
+                url: '/users/register',
+                method: 'POST',
+                body: data,
             }),
         }),
         login: builder.mutation({
             query: (credentials) => ({
-              url: '/users/login',
-              method: 'POST',
-              body: credentials,
+                url: '/users/login',
+                method: 'POST',
+                body: credentials,
             }),
-          }),
+        }),
         logout: builder.mutation({
             query: () => ({
                 url: '/users/logout',
@@ -53,6 +56,7 @@ export const apiSlice = createApi({
 
 export const {
     useGetBlogsQuery,
+    useGetBlogPostByIdQuery,
     useAddBlogsMutation,
     useUpdateBlogsMutation,
     useDeleteBlogsMutation,

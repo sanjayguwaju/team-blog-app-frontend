@@ -1,31 +1,22 @@
-import { useState, useEffect} from "react"
-import axios from "axios"
-import { useParams } from "react-router-dom"
-import BlogPost from "../components/BlogPost"
+import { useParams } from "react-router-dom";
+import BlogPost from "../components/BlogPost";
+import { useGetBlogPostByIdQuery } from "../features/api/apiSlice";
 
 const BlogPostByID = () => {
-  const [postbyId, setPostById] = useState([]);
-  const [showTrimmedPost, setshowTrimmedPost] = useState(false);
-  const [ShowReadMore, setShowReadMore] = useState(true);
-  const [showCommentSection, setShowCommentSection] = useState(false);
   const { id } = useParams();
+  const { data: postById, isLoading } = useGetBlogPostByIdQuery(id);
 
-  useEffect(() => {
-    if(postbyId) {
-      setShowReadMore(false);
-      setShowCommentSection(true);
-    }
-    axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
-      .then(response => {
-        setPostById(response.data);
-      })
-  }, [id]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      <BlogPost title={postbyId.title} createdAt={postbyId.createdAt} content={postbyId.content} image={postbyId.image} author={postbyId?.author?.name} ShowReadMore={ShowReadMore} showTrimmedPost={showTrimmedPost} showCommentSection={showCommentSection}/>
+      <BlogPost
+        singlePost={postById}
+      />
     </>
-  )
-}
+  );
+};
 
-export default BlogPostByID
+export default BlogPostByID;

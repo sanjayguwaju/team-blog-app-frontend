@@ -6,14 +6,16 @@ import CommentSection from "./CommentSection";
 import { useBlogPost } from "../redux/hooks/hooks";
 import { useSelector } from "react-redux";
 
-const BlogPost = () => {
+const BlogPost = ({ singlePost }) => {
   const blogData = useSelector((state) => state.blogData);
   const { blogPostState } = useBlogPost();
 
+  const posts = singlePost ? [singlePost] : blogData;
+
   return (
     <>
-      <h2 className="mb-3">Latest posts</h2>
-      {blogData?.map((post) => {
+      <h2 className="mb-3">{singlePost ? 'Post' : 'Latest posts'}</h2>
+      {posts?.map((post) => {
         const formattedDate = formatDate(post.createdAt);
         const summary = createSummary(post.content);
         return (
@@ -71,25 +73,27 @@ const BlogPost = () => {
                 </figcaption>
               </figure>
               <div>
-                {blogPostState.showTrimmedPost ? (
-                  <div dangerouslySetInnerHTML={{ __html: summary }} />
-                ) : (
-                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                )}
-              </div>
-              {blogPostState.showReadMore && (
-                <Link
-                  to={`/getpostbyid/${post._id}`}
-                  className="btn btn-primary"
-                >
-                  Read More
-                </Link>
+              {singlePost ? (
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              ) : blogPostState.showTrimmedPost ? (
+                <div dangerouslySetInnerHTML={{ __html: summary }} />
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
               )}
+              </div>
+              {!singlePost && blogPostState.showReadMore && (
+              <Link
+                to={`/getpostbyid/${post._id}`}
+                className="btn btn-primary"
+              >
+                Read More
+              </Link>
+            )}
             </header>
           </article>
         );
       })}
-      {blogPostState.showCommentSection && <CommentSection />}
+      {(singlePost || blogPostState.showCommentSection) && <CommentSection />}
     </>
   );
 };
