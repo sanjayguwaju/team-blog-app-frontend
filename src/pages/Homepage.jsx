@@ -21,12 +21,24 @@ const Homepage = () => {
     }
   }, [allBlogData]);
 
-  return (
-    <>
-      <BlogPost />
-      <Pagination />
-    </>
-  );
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (isSuccess) {
+    return (
+      <>
+        <BlogPost />
+        <Pagination />
+      </>
+    );
+  }
+
+  return null;
 };
 
 export default Homepage;
