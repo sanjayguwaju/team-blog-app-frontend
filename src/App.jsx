@@ -23,6 +23,7 @@ function App() {
         <Route path="/myblogs" element={<MyBlogs/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/loader" element={<Loader/>} />
+        <Route path="/updateblog/:id" element={<Write />} />
       </Routes>
   );
 }

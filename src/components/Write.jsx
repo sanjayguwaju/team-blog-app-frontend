@@ -1,18 +1,35 @@
-import { useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import Navbar from "./Nabar";
+import { useState,useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Navbar from "./Navbar";
+
 
 const Write = () => {
     const [value, setValue] = useState("");
     const [title, setTitle] = useState("");
+    const [postbyId, setPostById] = useState([]);
     const [file, setFile] = useState(null);
     const [cat, setCat] = useState("");
     const [tags, setTags] = useState([]);
     const [isDraft, setIsDraft] = useState(true);
     const [imageUrl, setImageUrl] = useState("");
-    console.log("imageUrl", imageUrl)
+    const { id } = useParams();
+
+    useEffect(() => {
+        axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
+          .then(response => {
+            const{title, content, image, category, tags} = response.data;
+            setTitle(title);
+            setValue(content);
+            setImageUrl(image);
+            setCat(category);
+            setTags(tags);
+            setPostById(response.data);
+          })
+      }, [id]);
+
 
     const handleAddTag = (e) => {
         // Add the tag to the list of tags
@@ -40,12 +57,12 @@ const Write = () => {
 
         // Send the payload to the server using axios.post
         axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
-            .then((response) => {
-                console.log("Post created successfully:", response.data);
-                alert("Blog post added successfully!");
+            .then(() => {
+                toast("Blog post added successfully")
             })
             .catch((error) => {
-                console.error("Error creating post:", error);
+                console.log(error)
+                toast("Failed to add blog. Please try again")
             });
     };
 
@@ -69,6 +86,7 @@ const Write = () => {
                 console.error("Error saving draft:", error);
             });
     };
+     
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
