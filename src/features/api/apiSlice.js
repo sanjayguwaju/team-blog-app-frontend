@@ -14,7 +14,7 @@ export const apiSlice = createApi({
                 body: payload
             })
         }),
-        updateBlogs: builder.query({
+        updateBlogs: builder.mutation({
             query: (payload)=> ({
                 url: `/update/${payload.id}`,
                 method: 'PUT',
@@ -27,7 +27,27 @@ export const apiSlice = createApi({
                 method: 'DELETE',
                 body: id
             })
-        })
+        }),
+        register: builder.mutation({
+            query: (data) => ({
+              url: '/users/register',
+              method: 'POST',
+              body: data,
+            }),
+        }),
+        login: builder.mutation({
+            query: (credentials) => ({
+              url: '/users/login',
+              method: 'POST',
+              body: credentials,
+            }),
+          }),
+        logout: builder.mutation({
+            query: () => ({
+                url: '/users/logout',
+                method: 'POST',
+            }),
+        }),
     })
 })
 
@@ -36,4 +56,7 @@ export const {
     useAddBlogsMutation,
     useUpdateBlogsMutation,
     useDeleteBlogsMutation,
+    useRegisterMutation,
+    useLoginMutation,
+    useLogoutMutation,
 } = apiSlice
