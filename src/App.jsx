@@ -7,6 +7,7 @@ import SinglePostLayout from './components/SinglePostLayout';
 import Write from './components/Write';
 import Register from './components/Register';
 import MyBlogs from './components/MyBlogs';
+import Loader from './components/Loader/Loader';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/write" element={<Write />} />
         <Route path="/myblogs" element={<MyBlogs/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/loader" element={<Loader/>} />
         <Route path="/updateblog/:id" element={<Write />} />
       </Routes>
   );
