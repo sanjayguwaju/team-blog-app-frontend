@@ -1,10 +1,13 @@
-import { faSearch, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons'; // Import the faSearch icon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesomeIcon component
-import { Link } from 'react-router-dom';
+import {
+  faSearch,
+  faPenToSquare,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons"; // Import the faSearch icon
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../redux/slices/userSlice/index';
-
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/slices/userSlice/index";
 
 const Navbar = () => {
   const user = useSelector((state) => state.user);
@@ -13,7 +16,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    localStorage.removeItem('accessToken'); // If you're using an access token, remove it from local storage
+    localStorage.removeItem("accessToken"); // If you're using an access token, remove it from local storage
   };
   return (
     <>
@@ -102,48 +105,61 @@ const Navbar = () => {
               </button>
             </form>
 
-            <div className="button__container d-flex justify-content-between">
-              <div className="button_container_left">
-                <Link to="/write" className="mx-3">
-                  <button className="btn btn-primary">
-                    <FontAwesomeIcon
-                      icon={faPenToSquare}
-                      aria-hidden="true"
-                      style={{ color: "white" }}
-                    />
+            {user?.status === "succeeded" && (
+              <div className="button__container d-flex justify-content-between">
+                <div className="button_container_left">
+                  <Link to="/write" className="mx-3">
+                    <button className="btn btn-primary">
+                      <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        aria-hidden="true"
+                        style={{ color: "white" }}
+                      />
+                    </button>
+                  </Link>
+                </div>
+                <div className="button_container_right">
+                  <button
+                    className="btn btn-primary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+                    <span className="visually-hidden">Search</span>
                   </button>
-                </Link>
+                  <ul
+                    className="dropdown-menu dropdown-menu-end mx-3"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <li className="dropdown-item">
+                      {user?.user || "test@gmail.com"}
+                    </li>
+                    <hr />
+                    <li className="dropdown-item">
+                      <Link to="/myblogs" style={{ color: "black" }}>
+                        My Blogs
+                      </Link>
+                    </li>
+                    <li className="dropdown-item">Settings</li>
+                    <hr />
+                    <li
+                      className="dropdown-item"
+                      style={{ textAlign: "center" }}
+                    >
+                      <button
+                        className="btn btn-primary"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="button_container_right">
-                <button
-                  className="btn btn-primary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <FontAwesomeIcon icon={faUser} aria-hidden="true" />
-                  <span className="visually-hidden">Search</span>
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-end mx-3"
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <li className="dropdown-item">{user?.user || "test@gmail.com"}</li>
-                  <hr />
-                  <li className="dropdown-item">
-                    <Link to="/myblogs" style={{ color: "black" }}>
-                      My Blogs
-                    </Link>
-                  </li>
-                  <li className="dropdown-item">Settings</li>
-                  <hr />
-                  <li className="dropdown-item" style={{ textAlign: "center" }}>
-                    <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            )}
+
             {user?.status !== "succeeded" && (
               <div className="d-flex justify-content-between">
                 <Link to="/register" className="mx-3">
