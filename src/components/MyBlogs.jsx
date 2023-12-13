@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 function MyBlogs() {
     const [searchTerm, setSearchTerm] = useState('');
     const [blogs, setBlogs] = useState([]);
+    const userID = useSelector((state) => state?.user?.userId);
+    console.log("user")
     const navigate = useNavigate();
 
     useEffect(() => {
         const getBlogs = async () => {
             try {
-                const res = await axios.get(`${process.env.SERVER_URL}/blogs/getallblog`);
+                const res = await axios.get(`${process.env.SERVER_URL}/blogs/get-blog-post-by-user-id/${userID}`);
                 setBlogs(res.data);
             } catch (error) {
                 console.log(error);
