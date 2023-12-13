@@ -1,3 +1,4 @@
+import { useEffect, useState} from "react";
 import {
   faSearch,
   faPenToSquare,
@@ -8,11 +9,38 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/slices/userSlice/index";
+import { useGetBlogsQuery, useSearchBlogPostsQuery } from '../features/api/apiSlice';
+import { setBlogData } from "../redux/slices/blogDataSlice/index";
 
 const Navbar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [skipSearch, setSkipSearch] = useState(true);
+  const { data: searchResults, refetch: refetchSearch } = useSearchBlogPostsQuery(searchTerm, { skip: skipSearch });
+  const { data: allBlogs, refetch: refetchAllBlogs } = useGetBlogsQuery();
   const user = useSelector((state) => state.user);
-  console.log("userData--->", user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      refetchAllBlogs().then(({ data }) => {
+        if (data) {
+          dispatch(setBlogData(data));
+        }
+      });
+    }
+  }, [searchTerm, dispatch, refetchAllBlogs]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (searchTerm !== "") {
+      setSkipSearch(false);
+      refetchSearch().then(({ data }) => {
+        if (data) {
+          dispatch(setBlogData(data));
+        }
+      });
+    }
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -91,13 +119,15 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-            <form className="d-none d-md-none d-lg-flex">
+            <form className="d-none d-md-none d-lg-flex" onSubmit={handleSearch}>
               <input
                 type="text"
                 name="search"
                 className="form-control me-2"
                 placeholder="Search"
                 aria-label="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <button type="submit" className="btn btn-primary">
                 <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
@@ -174,13 +204,15 @@ const Navbar = () => {
         </div>
       </nav>
       <div className="mx-2 my-2 d-block d-md-block d-lg-none">
-        <form className="d-flex">
+        <form className="d-flex" onSubmit={handleSearch}>
           <input
             type="text"
             name="search"
             className="form-control full-width-input me-2"
             placeholder="Search"
             aria-label="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button type="submit" className="btn btn-primary">
             <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
