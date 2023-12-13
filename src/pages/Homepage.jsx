@@ -1,66 +1,44 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Pagination from "../components/Pagination";
-import axios from "axios";
 import BlogPost from "../components/BlogPost";
-import Loader from "../components/Loader/Loader";
+import { useGetBlogsQuery } from "../features/api/apiSlice";
+import { useDispatch } from "react-redux";
+import { setBlogData } from "../redux/slices/blogDataSlice/index";
 
 const Homepage = () => {
-    const [posts, setPost] = useState([]);
-    const [showTrimmedPost, setshowTrimmedPost] = useState(true);
-    const [ShowReadMore, setShowReadMore] = useState(false);
-    const [showCommentSection, setShowCommentSection] = useState(false);
-    const [isLoader, setIsLoader] = useState(true);
+  const dispatch = useDispatch();
+  const {
+    data: allBlogData,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetBlogsQuery();
+
   useEffect(() => {
-    if (posts) {
-      setShowReadMore(true);
+    if (allBlogData) {
+      dispatch(setBlogData(allBlogData));
     }
-    getAllBlogs(setPost);
+  }, [allBlogData]);
 
-    const id = setInterval(() => {
-      getAllBlogs(setPost);
-    }, 50000);
-
-    return () => clearInterval(id);
-  }, []);
-
-  function getAllBlogs(setPost) {
-    axios
-      .get(`${process.env.SERVER_URL}/blogs/getallblog`)
-      .then((response) => {
-        console.log("response ~~~~~>",response);
-        setPost(response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
-        setIsLoader(false);
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  return (
-    <>
-      {posts.map((postdata) => (
-        <BlogPost
-          key={postdata._id}
-          id={postdata._id}
-          title={postdata.title}
-          content={postdata.content}
-          image={postdata.image}
-          createdAt={postdata.createdAt}
-          ShowReadMore={ShowReadMore}
-          author={
-            postdata?.author?.name
-              ? postdata?.author?.name
-              : "no author is avaliable"
-          }
-          showTrimmedPost={showTrimmedPost}
-          showCommentSection={showCommentSection}
-        />
-      ))}
-      {isLoader  && <Loader/> }
-      <Pagination />
-    </>
-  );
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (isSuccess) {
+    return (
+      <>
+        <BlogPost />
+        <Pagination />
+      </>
+    );
+  }
+
+  return null;
 };
 
 export default Homepage;

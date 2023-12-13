@@ -11,6 +11,7 @@ import Loader from './components/Loader/Loader';
 
 function App() {
   return (
+    <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
             <Route index element={<Homepage />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/loader" element={<Loader/>} />
         <Route path="/updateblog/:id" element={<Write />} />
       </Routes>
+    </>
   );
 }
 
