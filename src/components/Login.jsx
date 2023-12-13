@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../features/api/apiSlice";
 import {
   setUser,
+  setUserId,
   clearUser,
   setUserFailed,
 } from "../redux/slices/userSlice/index";
@@ -36,6 +37,8 @@ const Login = () => {
   useEffect(() => {
     if (data) {
       localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("currentUserID", data.userId);
+      dispatch(setUserId(data?.userId));
       dispatch(setUser(data?.email));
       setLoginStatus(true);
       navigate("/");
