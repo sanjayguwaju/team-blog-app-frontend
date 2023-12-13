@@ -51,6 +51,9 @@ export const apiSlice = createApi({
                 method: 'POST',
             }),
         }),
+        searchBlogPosts: builder.query({
+            query: (query) => `blogs/search?query=${query}`,
+          }),
     })
 })
 
@@ -63,4 +66,5 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useLogoutMutation,
+    useSearchBlogPostsQuery,
 } = apiSlice
