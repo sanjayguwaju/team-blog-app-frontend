@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
+import { useSelector } from 'react-redux';
 
 
 const Write = () => {
@@ -16,6 +17,7 @@ const Write = () => {
     const [isDraft, setIsDraft] = useState(true);
     const [imageUrl, setImageUrl] = useState("");
     const { id } = useParams();
+    const userID = useSelector((state) => state?.user?.userId);
 
     useEffect(() => {
         axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
@@ -51,6 +53,7 @@ const Write = () => {
             category: cat,
             tags,
             image: imageUrl,
+            author: userID,
         };
 
         console.log("payload", payload)
