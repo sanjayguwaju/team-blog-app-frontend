@@ -56,8 +56,6 @@ const Write = () => {
             author: userID,
         };
 
-        console.log("payload", payload)
-
         // Send the payload to the server using axios.post
         axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
             .then(() => {
