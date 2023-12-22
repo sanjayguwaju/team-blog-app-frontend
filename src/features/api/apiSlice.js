@@ -54,6 +54,9 @@ export const apiSlice = createApi({
         searchBlogPosts: builder.query({
             query: (query) => `blogs/search?query=${query}`,
           }),
+        getAllBlogPosts: builder.query({
+            query: ({ page, limit }) => `blogs/getallblog?page=${page}&limit=${limit}`,
+        }),
     })
 })
 
@@ -67,4 +70,5 @@ export const {
     useLoginMutation,
     useLogoutMutation,
     useSearchBlogPostsQuery,
+    useGetAllBlogPostsQuery,
 } = apiSlice
