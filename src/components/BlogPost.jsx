@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
@@ -11,9 +12,34 @@ import { useGetAllBlogPostsQuery } from "../features/api/apiSlice";
 
 import CommentSection from "./CommentSection";
 
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
+
 const BlogPost = ({ singlePost }) => {
   const { blogPostState } = useBlogPost();
-  const { data: blogData, isLoading, isError, error } = useGetAllBlogPostsQuery({page:1, limit: 2});
+  const [page, setPage] = useState(1);
+  const [allPosts, setAllPosts] = useState([]); 
+  
+
+  const fetchMoreBlogPosts = () => {
+    // console.log("fetchMoreBlogPosts Called");
+    setPage(prevPage => prevPage + 1);
+  };
+
+  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreBlogPosts);
+
+  // console.log("page -->", page);
+
+  const { data: blogData, isLoading, isError, error } = useGetAllBlogPostsQuery({page, limit: 2});
+
+  useEffect(() => {
+    if (blogData) {
+      // console.log("blogdata --->", blogData);
+      setAllPosts(prevPosts => [...prevPosts, ...blogData]); // Update allPosts state
+    }
+    if (!isLoading) {
+      setIsFetching(false);
+    }
+  }, [blogData, setIsFetching, isLoading]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -23,7 +49,7 @@ const BlogPost = ({ singlePost }) => {
     return <div>Error: {error.message}</div>;
   }
 
-  const posts = singlePost ? [singlePost] : blogData;
+  const posts = singlePost ? [singlePost] : allPosts;
 
   return (
     <>
@@ -106,6 +132,7 @@ const BlogPost = ({ singlePost }) => {
           </article>
         );
       })}
+      {isFetching && <p>Loading more posts...</p>}
       {(singlePost || blogPostState.showCommentSection) && <CommentSection />}
     </>
   );
