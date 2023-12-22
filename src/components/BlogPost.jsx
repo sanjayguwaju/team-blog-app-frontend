@@ -115,7 +115,7 @@ BlogPost.propTypes = {
   singlePost: PropTypes.shape({
     title: PropTypes.string,
     content: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
 export default BlogPost;
