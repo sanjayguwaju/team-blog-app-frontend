@@ -28,8 +28,7 @@ const Write = () => {
             setTags(tags);
             setPostById(response.data);
           })
-      }, [id]);
-
+      }, [id]); 
 
     const handleAddTag = (e) => {
         // Add the tag to the list of tags
