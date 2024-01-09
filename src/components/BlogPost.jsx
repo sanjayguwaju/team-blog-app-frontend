@@ -62,7 +62,7 @@ const BlogPost = ({ singlePost }) => {
             <header className="mb-2">
               <span className="badge bg-primary">Category</span>
               <h1>
-                <Link to={`/getpostbyid/${post._id}`}>{post.title}</Link>
+                <Link to={`/getpostbyid/${post._id}`} style={{ textDecoration: 'none' }}>{post.title}</Link>
               </h1>
               <div>
                 <a href="#0">{post?.author?.name}</a>
