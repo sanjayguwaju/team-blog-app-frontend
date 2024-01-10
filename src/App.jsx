@@ -8,6 +8,7 @@ import Write from './components/Write';
 import Register from './components/Register';
 import MyBlogs from './components/MyBlogs';
 import Loader from './components/Loader/Loader';
+import RedirectToAPIDocs from './components/ApiDocs';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/loader" element={<Loader/>} />
         <Route path="/updateblog/:id" element={<Write />} />
+          <Route path="/api-docs" element={<RedirectToAPIDocs />} />
       </Routes>
     </>
   );
