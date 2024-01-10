@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "./Navbar";
+import { useSelector } from 'react-redux';
 
 
 const Write = () => {
@@ -16,6 +17,7 @@ const Write = () => {
     const [isDraft, setIsDraft] = useState(true);
     const [imageUrl, setImageUrl] = useState("");
     const { id } = useParams();
+    const userID = useSelector((state) => state?.user?.userId);
 
     useEffect(() => {
         axios.get(`${process.env.SERVER_URL}/blogs/getblogpostbyid/${id}`)
@@ -50,18 +52,17 @@ const Write = () => {
             category: cat,
             tags,
             image: imageUrl,
+            author: userID,
         };
-
-        console.log("payload", payload)
 
         // Send the payload to the server using axios.post
         axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
             .then(() => {
-                toast("Blog post added successfully")
+                toast("Blog post published successfully")
             })
             .catch((error) => {
                 console.log(error)
-                toast("Failed to add blog. Please try again")
+                toast("Failed to publish blog. Please try again")
             });
     };
 

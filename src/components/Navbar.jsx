@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Import the faSearch icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./Navbar.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/slices/userSlice/index";
 import { useGetBlogsQuery, useSearchBlogPostsQuery } from '../features/api/apiSlice';
