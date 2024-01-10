@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 
 // ----- CSS for the packages -----
-import "./index.css";
+import "./index.scss";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-quill/dist/quill.snow.css";
