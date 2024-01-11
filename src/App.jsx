@@ -1,13 +1,13 @@
 import { Routes, Route} from 'react-router-dom'
-import Homepage from './pages/Homepage';
-import BlogPostByID from './pages/BlogPostByID';
-import MainLayout from './components/MainLayout';
-import Login from './components/Login';
-import SinglePostLayout from './components/SinglePostLayout'; 
-import Write from './components/Write';
-import Register from './components/Register';
-import MyBlogs from './components/MyBlogs';
-import Loader from './components/Loader/Loader';
+import Homepage from './pages/homepage/Homepage';
+import BlogPostByID from './pages/single-post/BlogPostByID';
+import MainLayout from './components/layouts/main-layout/MainLayout';
+import Login from './components/modules/login/Login';
+import SinglePostLayout from './components/layouts/sidebar/SinglePostLayout'; 
+import Write from './components/modules/write/Write';
+import Register from './components/modules/register/Register';
+import MyBlogs from './components/modules/myblogs/MyBlogs';
+import Loader from './components/ui/loader/Loader';
 import RedirectToAPIDocs from './components/ApiDocs';
 
 function App() {

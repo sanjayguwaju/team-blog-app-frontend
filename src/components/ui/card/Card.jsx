@@ -1,6 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./Card.scss";
+import "../card/Card.scss";
 
 const Card = () => {
   return (
