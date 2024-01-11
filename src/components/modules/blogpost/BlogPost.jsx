@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import "./BlogPost.css";
 
 import { formatDate, createSummary } from "../../../services/utility.services";
 
@@ -128,6 +129,7 @@ const BlogPost = ({ singlePost }) => {
                   Read More
                 </Link>
               )}
+              <hr className="blogpost--separator"/>
             </header>
           </article>
         );
