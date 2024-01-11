@@ -8,6 +8,7 @@ import App from "./App.jsx";
 // ----- CSS for the packages -----
 import "./assets/sass/base/index.scss";
 import "react-toastify/dist/ReactToastify.css";
+import "boottrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-quill/dist/quill.snow.css";
 
