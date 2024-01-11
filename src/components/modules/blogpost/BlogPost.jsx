@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-import { formatDate, createSummary } from "../services/utility.services";
+import { formatDate, createSummary } from "../../../services/utility.services";
 
-import { useBlogPost } from "../redux/hooks/hooks";
+import { useBlogPost } from "../../../redux/hooks/hooks";
 
-import { useGetAllBlogPostsQuery } from "../features/api/apiSlice";
+import { useGetAllBlogPostsQuery } from "../../../features/api/apiSlice";
 
 import CommentSection from "./CommentSection";
 
-import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 
 const BlogPost = ({ singlePost }) => {
   const { blogPostState } = useBlogPost();
