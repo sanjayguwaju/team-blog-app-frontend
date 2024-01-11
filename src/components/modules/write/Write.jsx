@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Navbar from "./Navbar";
+import Navbar from "../navbar/Navbar";
 import { useSelector } from 'react-redux';
 
 

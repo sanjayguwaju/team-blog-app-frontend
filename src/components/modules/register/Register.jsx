@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRegisterMutation } from "../features/api/apiSlice";
+import { useRegisterMutation } from "../../../features/api/apiSlice";
 
 const Register = () => {
   const [register, { isLoading, isSuccess, isError }] = useRegisterMutation();

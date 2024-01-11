@@ -1,4 +1,4 @@
-import BlogPost from "../components/BlogPost";
+import BlogPost from "../../components/modules/blogpost/BlogPost";
 
 const Homepage = () => {
  

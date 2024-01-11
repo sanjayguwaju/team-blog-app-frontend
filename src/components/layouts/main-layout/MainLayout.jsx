@@ -1,9 +1,9 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../../modules/navbar/Navbar";
+import Footer from "../../modules/footer/Footer";
+import Sidebar from "../sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
-import SidebarSinglePost from "./SidebarSinglePost";
 
-const SingleBlogPostLayout = () => {
+const MainLayout = () => {
     return (
         <>
             <Navbar />
@@ -13,7 +13,7 @@ const SingleBlogPostLayout = () => {
                         <Outlet />
                     </div>
                     <div className="col-md-4"> 
-                    <SidebarSinglePost />
+                        <Sidebar />
                     </div>
                 </div>
             </div>
@@ -22,4 +22,4 @@ const SingleBlogPostLayout = () => {
     );
 };
 
-export default SingleBlogPostLayout;
+export default MainLayout;

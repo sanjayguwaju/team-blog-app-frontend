@@ -5,16 +5,16 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Login.scss";
+import "../login/Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "../features/api/apiSlice";
+import { useLoginMutation } from "../../../features/api/apiSlice";
 import {
   setUser,
   setUserId,
   clearUser,
   setUserFailed,
-} from "../redux/slices/userSlice/index";
+} from "../../../redux/slices/userSlice/index";
 
 const Login = () => {
   const [login, { data, isError, isLoading }] = useLoginMutation();
