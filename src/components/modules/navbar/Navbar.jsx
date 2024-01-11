@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the 
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../redux/slices/userSlice/index";
-import { useGetBlogsQuery, useSearchBlogPostsQuery } from '../features/api/apiSlice';
-import { setBlogData } from "../redux/slices/blogDataSlice/index";
+import { logout } from "../../../redux/slices/userSlice/index";
+import { useGetBlogsQuery, useSearchBlogPostsQuery } from '../../../features/api/apiSlice';
+import { setBlogData } from "../../../redux/slices/blogDataSlice/index";
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');

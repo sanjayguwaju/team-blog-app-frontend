@@ -1,4 +1,4 @@
-import "./Loader.scss"
+import "../loader/Loader.scss"
 
 const Loader = () => {
     return (
