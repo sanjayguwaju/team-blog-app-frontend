@@ -59,11 +59,11 @@ const Write = () => {
         // Send the payload to the server using axios.post
         axios.post(`${process.env.SERVER_URL}/blogs/createblog`, payload)
             .then(() => {
-                toast("Blog post added successfully")
+                toast("Blog post published successfully")
             })
             .catch((error) => {
                 console.log(error)
-                toast("Failed to add blog. Please try again")
+                toast("Failed to publish blog. Please try again")
             });
     };
 
