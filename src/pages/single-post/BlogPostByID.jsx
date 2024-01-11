@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import BlogPost from "../components/BlogPost";
+import BlogPost from "../../components/modules/blogpost/BlogPost";
 import { useGetBlogPostByIdQuery } from "../../features/api/apiSlice";
 
 const BlogPostByID = () => {

@@ -1,9 +1,9 @@
-import Card from "./Card";
-import Categories from "./Categories";
-import Newsletter from "./Newsletter";
+import Card from "../../ui/card/Card";
+import Categories from "../../ui/categories/Categories";
+import Newsletter from "../../ui/newsletter/Newsletter";
 import RecentPostWidget from "../../ui/recent-card/RecentPostWidget";
-import TagCloud from "./TagCloud";
-import AboutAuthor from "./AboutAuthor";
+import TagCloud from "../../ui/tagcloud/TagCloud";
+import AboutAuthor from "../../ui/about-author/AboutAuthor";
 const SidebarSinglePost = () => {
   return (
     <>

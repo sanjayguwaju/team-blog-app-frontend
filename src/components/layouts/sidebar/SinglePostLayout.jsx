@@ -1,7 +1,7 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../../modules/navbar/Navbar";
+import Footer from "../../modules/footer/Footer";
 import { Outlet } from "react-router-dom";
-import SidebarSinglePost from "./SidebarSinglePost";
+import SidebarSinglePost from "../sidebar/SidebarSinglePost";
 
 const SingleBlogPostLayout = () => {
     return (

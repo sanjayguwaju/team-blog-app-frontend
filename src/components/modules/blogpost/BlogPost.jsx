@@ -10,7 +10,7 @@ import { useBlogPost } from "../../../redux/hooks/hooks";
 
 import { useGetAllBlogPostsQuery } from "../../../features/api/apiSlice";
 
-import CommentSection from "./CommentSection";
+import CommentSection from "../../ui/comment/CommentSection";
 
 import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 
