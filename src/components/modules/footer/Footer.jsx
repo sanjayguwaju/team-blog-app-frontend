@@ -1,16 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import './Footer.scss';
 
 const Footer = () => {
   return (
-    <footer className="small bg-light">
+    <footer className="small bg-light Footer">
       <div className="container py-3 py-sm-5">
         <div className="row">
           <div className="col-12 col-sm-6 col-md-3">
             <h6>Quick links</h6>
             <ul className="list-unstyled">
-              <li><a href="#0">Home</a></li>
-              <li><a href="#0">Archive</a></li>
+            <li><a href="/">Home</a></li>
+              <li><a href="#0" >Archive</a></li>
               <li><a href="#0">Categories</a></li>
               <li><a href="#0">Tag cloud</a></li>
               <li><a href="#0">Search</a></li>
@@ -20,7 +21,7 @@ const Footer = () => {
             <h6>Information</h6>
             <ul className="list-unstyled">
               <li><a href="#0">About us</a></li>
-              <li><a href="#0">Authors</a></li>
+              <li><a href="#0" >Authors</a></li>
               <li><a href="#0">Newsletter</a></li>
               <li><a href="#0">Advertising</a></li>
               <li><a href="#0">Sitemap</a></li>
