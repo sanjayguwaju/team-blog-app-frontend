@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faComments } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faComments, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import "./blogpost.scss"
 import "./BlogPost.css";
 
 import { formatDate, createSummary } from "../../../services/utility.services";
@@ -61,43 +62,45 @@ const BlogPost = ({ singlePost }) => {
         return (
           <article className="mb-3" key={post._id}>
             <header className="mb-2">
-              <span className="badge bg-primary">Category</span>
-              <h1>
+              <span className="category">Category</span>
+              <h1 className="blogpost-title">
                 <Link to={`/getpostbyid/${post._id}`}>{post.title}</Link>
               </h1>
-              <div>
+              <div className="author-date--container">
                 <a href="#0">{post?.author?.name}</a>
+                <a  className="date">Posted on: {formattedDate}</a>
               </div>
-              <div className="small">Posted on: {formattedDate}</div>
-              <div className="small">
-                <span className="badge bg-primary">
-                  <FontAwesomeIcon icon={faThumbsUp} /> 13{" "}
-                  <span className="visually-hidden">likes</span>
-                </span>
-                <span className="badge bg-primary">
-                  <FontAwesomeIcon icon={faComments} /> 3{" "}
-                  <span className="visually-hidden">comments</span>
-                </span>
-              </div>
-              <div className="small">
-                <a href="#0" className="badge bg-secondary">
-                  #tag
-                </a>
-                <a href="#0" className="badge bg-secondary">
-                  #longtag
-                </a>
-                <a href="#0" className="badge bg-secondary">
-                  #tag
-                </a>
-                <a href="#0" className="badge bg-secondary">
-                  #longertag
-                </a>
-                <a href="#0" className="badge bg-secondary">
-                  #tag
-                </a>
-                <a href="#0" className="badge bg-secondary">
-                  #verylongtag
-                </a>
+              <div className="like-container my-element">
+                <div className="small">
+                  <a href="#0" className="tag">
+                    #tag
+                  </a>
+                  <a href="#0" className="tag">
+                    #longtag
+                  </a>
+                  <a href="#0" className="tag">
+                    #tag
+                  </a>
+                  {/* <a href="#0" className="tag">
+                    #longertag
+                  </a>
+                  <a href="#0" className="tag">
+                    #tag
+                  </a>
+                  <a href="#0" className="tag">
+                    #verylongtag
+                  </a> */}
+                </div>
+                <div className="small">
+                  <buttton className="like--button">
+                    <FontAwesomeIcon icon={faThumbsUp} /> 13{" "}
+                    <span className="visually-hidden">likes</span>
+                  </buttton>
+                  <buttton className="dislike--button">
+                    <FontAwesomeIcon icon={faThumbsDown} /> 13{" "}
+                    <span className="visually-hidden">likes</span>
+                  </buttton>
+                </div>
               </div>
               <figure className="figure">
                 <img
@@ -108,7 +111,7 @@ const BlogPost = ({ singlePost }) => {
                 <figcaption className="figure-caption small">
                   <p className="mb-0">
                     <i className="fa fa-camera" aria-hidden="true"></i>
-                    <span className="sr-only">Photo by:</span> Artist Name
+                    <span className="sr-only">Photo by:</span> Image Description : 
                   </p>
                 </figcaption>
               </figure>
@@ -124,7 +127,7 @@ const BlogPost = ({ singlePost }) => {
               {!singlePost && blogPostState.showReadMore && (
                 <Link
                   to={`/getpostbyid/${post._id}`}
-                  className="btn btn-primary"
+                  className="read-more-button"
                 >
                   Read More
                 </Link>
