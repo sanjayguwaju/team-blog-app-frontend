@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./blogpost.scss"
+import "./BlogPost.css";
 
 import { formatDate, createSummary } from "../../../services/utility.services";
 
@@ -131,6 +132,7 @@ const BlogPost = ({ singlePost }) => {
                   Read More
                 </Link>
               )}
+              <hr className="blogpost--separator"/>
             </header>
           </article>
         );
