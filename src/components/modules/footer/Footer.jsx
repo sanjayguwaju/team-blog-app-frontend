@@ -4,7 +4,7 @@ import './Footer.scss';
 
 const Footer = () => {
   return (
-    <footer className="small bg-light Footer">
+    <footer className="small bg-light custom--footer">
       <div className="container py-3 py-sm-5">
         <div className="row">
           <div className="col-12 col-sm-6 col-md-3">
