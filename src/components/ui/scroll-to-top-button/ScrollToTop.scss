@@ -1,0 +1,17 @@
+.arrow-button {
+    animation: moveUpDown 2s infinite;
+  }
+  
+  .arrow-button:hover {
+    animation-play-state: paused;
+  }
+  
+  @keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
