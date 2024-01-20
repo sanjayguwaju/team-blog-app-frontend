@@ -12,7 +12,7 @@ const SingleBlogPostLayout = () => {
                     <div className="col-md-8">
                         <Outlet />
                     </div>
-                    <div className="col-md-4"> 
+                    <div className="col-md-4 custom--column"> 
                     <SidebarSinglePost />
                     </div>
                 </div>
