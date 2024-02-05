@@ -148,7 +148,7 @@ const Navbar = () => {
                     </button>
                   </Link>
                 </div>
-                <div className="button_container_right">
+                <div className="dropdown button_container_right">
                   <button
                     className="btn btn-primary dropdown-toggle"
                     type="button"
