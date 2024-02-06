@@ -168,7 +168,7 @@ const Navbar = () => {
                     </li>
                     <hr />
                     <li className="dropdown-item">
-                      <Link to="/myblogs" style={{ color: "black" }}>
+                      <Link to="/myblogs" style={{ color: "black", textDecoration:"none" }}>
                         My Blogs
                       </Link>
                     </li>
