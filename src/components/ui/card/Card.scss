@@ -1,3 +1,37 @@
+// Define base variables
+$base-color: #333;
+$base-background-color: #fff;
+$base-border-color: #ddd;
+
+// Base card style
+.card {
+    color: $base-color;
+    background-color: $base-background-color;
+    border-color: $base-border-color;
+}
+
+// Custom card style
 .custom-card {
     box-sizing: content-box;
+    // Add more custom styles here if needed
 }
+
+// // Card body style
+// .card-body {
+//     // Add styles for card body here
+// }
+
+// // Card title style
+// .card-title {
+//     // Add styles for card title here
+// }
+
+// // Card text style
+// .card-text {
+//     // Add styles for card text here
+// }
+
+// // Read more link style
+// .btn-link {
+//     // Add styles for read more link here
+// }

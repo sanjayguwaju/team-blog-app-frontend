@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faComments, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faThumbsUp,
+  faComments,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "./blogpost.scss"
-import "./BlogPost.css";
+import "./blogpost.scss";
 
 import { formatDate, createSummary } from "../../../services/utility.services";
 
@@ -19,24 +22,28 @@ import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 const BlogPost = ({ singlePost }) => {
   const { blogPostState } = useBlogPost();
   const [page, setPage] = useState(1);
-  const [allPosts, setAllPosts] = useState([]); 
-  
+  const [allPosts, setAllPosts] = useState([]);
 
   const fetchMoreBlogPosts = () => {
     // console.log("fetchMoreBlogPosts Called");
-    setPage(prevPage => prevPage + 1);
+    setPage((prevPage) => prevPage + 1);
   };
 
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreBlogPosts);
 
   // console.log("page -->", page);
 
-  const { data: blogData, isLoading, isError, error } = useGetAllBlogPostsQuery({page, limit: 2});
+  const {
+    data: blogData,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllBlogPostsQuery({ page, limit: 2 });
 
   useEffect(() => {
     if (blogData) {
       // console.log("blogdata --->", blogData);
-      setAllPosts(prevPosts => [...prevPosts, ...blogData]); // Update allPosts state
+      setAllPosts((prevPosts) => [...prevPosts, ...blogData]); // Update allPosts state
     }
     if (!isLoading) {
       setIsFetching(false);
@@ -68,7 +75,7 @@ const BlogPost = ({ singlePost }) => {
               </h1>
               <div className="author-date--container">
                 <a href="#0">{post?.author?.name}</a>
-                <a  className="date">Posted on: {formattedDate}</a>
+                <a className="date">Posted on: {formattedDate}</a>
               </div>
               <div className="like-container my-element">
                 <div className="small">
@@ -111,7 +118,8 @@ const BlogPost = ({ singlePost }) => {
                 <figcaption className="figure-caption small">
                   <p className="mb-0">
                     <i className="fa fa-camera" aria-hidden="true"></i>
-                    <span className="sr-only">Photo by:</span> Image Description : 
+                    <span className="sr-only">Photo by:</span> Image Description
+                    :
                   </p>
                 </figcaption>
               </figure>
@@ -132,7 +140,7 @@ const BlogPost = ({ singlePost }) => {
                   Read More
                 </Link>
               )}
-              <hr className="blogpost--separator"/>
+              <hr className="hr-thin" />
             </header>
           </article>
         );
