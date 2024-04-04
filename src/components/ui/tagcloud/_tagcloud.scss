@@ -1,0 +1,20 @@
+.tag {
+    background-color: #8d776f;
+    /* Blue background */
+    color: white;
+    /* White text */
+    padding: 5px;
+    /* Some padding */
+    font-size: 12px;
+    border-radius: 2px;
+    /* Rounded corners */
+    display: inline-block;
+    margin: 0.2rem;
+    /* Some margin */
+    text-decoration: none;
+}
+
+.tag:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
