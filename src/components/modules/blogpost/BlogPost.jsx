@@ -19,10 +19,19 @@ import CommentSection from "../../ui/comment/CommentSection";
 
 import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 
+import likeIcon from '../../../assets/icons/like-outline.png';
+import unlikeIcon from '../../../assets/icons/unlike-outline.png';
+import filledLikeIcon from '../../../assets/icons/like-fill.png';
+import filledUnlikeIcon from '../../../assets/icons/unlike-fill.png';
+
 const BlogPost = ({ singlePost }) => {
   const { blogPostState } = useBlogPost();
   const [page, setPage] = useState(1);
   const [allPosts, setAllPosts] = useState([]);
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(100);
+  const [unliked, setUnliked] = useState(false);
+  const [unlikeCount, setUnlikeCount] = useState(100);
 
   const fetchMoreBlogPosts = () => {
     // console.log("fetchMoreBlogPosts Called");
@@ -57,6 +66,32 @@ const BlogPost = ({ singlePost }) => {
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
+
+  const toggleLike = () => {
+    if (liked) {
+        setLikeCount(likeCount - 100);
+    } else {
+        setLikeCount(likeCount + 100);
+    }
+    setLiked(!liked);
+    if (unliked) {
+        setUnliked(false);
+        setUnlikeCount(unlikeCount - 100);
+    }
+};
+
+const toggleUnlike = () => {
+    if (unliked) {
+        setUnlikeCount(unlikeCount - 100);
+    } else {
+        setUnlikeCount(unlikeCount + 100);
+    }
+    setUnliked(!unliked);
+    if (liked) {
+        setLiked(false);
+        setLikeCount(likeCount - 100);
+    }
+};
 
   const posts = singlePost ? [singlePost] : allPosts;
 
@@ -99,14 +134,40 @@ const BlogPost = ({ singlePost }) => {
                   </a> */}
                 </div>
                 <div className="small">
-                  <buttton className="like--button">
+                  {/* <buttton className="like--button">
                     <FontAwesomeIcon icon={faThumbsUp} /> 13{" "}
                     <span className="visually-hidden">likes</span>
-                  </buttton>
-                  <buttton className="dislike--button">
+                  </buttton> */}
+                  <div className="d-flex align-items-center">
+                    <div className="border mx-1 px-2 my-1 d-flex align-items-center">
+                      {" "}
+                      {/* Adjusted alignment */}
+                      <img
+                        src={liked ? filledLikeIcon : likeIcon}
+                        alt=""
+                        width="25px"
+                        height="25px"
+                        onClick={toggleLike}
+                      />
+                      <span className="ms-1 fw-bold">{likeCount}</span>{" "}
+                      {/* Display like count */}
+                    </div>
+                    <div className="border mx-1 px-2 my-1 d-flex align-items-center">
+                      <img
+                        src={unliked ? filledUnlikeIcon : unlikeIcon}
+                        alt=""
+                        width="25px"
+                        height="25px"
+                        onClick={toggleUnlike}
+                      />
+                      <span className="fw-bold">{unlikeCount}</span>{" "}
+                    </div>
+                  </div>
+
+                  {/* <buttton className="dislike--button">
                     <FontAwesomeIcon icon={faThumbsDown} /> 13{" "}
                     <span className="visually-hidden">likes</span>
-                  </buttton>
+                  </buttton> */}
                 </div>
               </div>
               <figure className="figure">
