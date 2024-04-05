@@ -1,0 +1,63 @@
+a {
+    text-decoration: none;
+}
+.popular-card {
+    .popular-card__title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+  
+    .popular-card__list {
+      .popular-card__item {
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+  
+        .popular-card__category {
+          background-color: #007bff;
+          color: #fff;
+          padding: 0.25rem 0.5rem;
+          border-radius: 3px;
+          font-size: 0.8rem;
+          margin-bottom: 0.5rem;
+        }
+  
+        .popular-card__heading {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+          color: #333;
+        }
+  
+        .popular-card__info {
+          font-size: 0.9rem;
+          color: #666;
+          margin-bottom: 0.5rem;
+        }
+  
+        .popular-card__meta {
+          font-size: 0.9rem;
+          color: #666;
+          margin-bottom: 0.5rem;
+  
+          svg {
+            margin-right: 0.25rem;
+          }
+        }
+  
+        .popular-card__content {
+          font-size: 1rem;
+          color: #444;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  
